@@ -22,14 +22,18 @@
 <numeric>
 <stdexcept>
 <functional>
-<limits>```
+<limits>
+```
 
 # the following are not allowed in c++ modules (except for STL containers in CPP08 nad CPP09)
 
 ## algorithm:
+```
 <algorithm>
+```
 
 ## STL (Standard Template Library) containers:
+```
 <vector>
 <list>
 <map>
@@ -37,6 +41,9 @@
 <queue>
 <deque> (double ended queue)
 <stack>
+```
 
 ## iterators (designed to work with STL containers):
+```
 <iterator>
+```
