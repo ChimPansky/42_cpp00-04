@@ -1,7 +1,7 @@
 # allowed/forbidden in C++ Modules:
 
 - Yes: Everything from the standard library (c++98).
-- No: printf(), alloc(), free()
+- No: ```printf()```, ```alloc()```, ```free()```
 - No: ```using namespace <ns_name>```
 - No: ```friend```
 - No: Function implementations in header files (only templates)
