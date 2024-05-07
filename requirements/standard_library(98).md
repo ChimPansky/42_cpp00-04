@@ -1,6 +1,7 @@
 # allowed headers from the standard library (-std=c++98)
 
-```<iomanip>
+```
+<iomanip>
 <ostream>
 <streambuf>
 <bitset>
