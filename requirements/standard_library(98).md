@@ -24,6 +24,7 @@
 <stdexcept>
 <functional>
 <limits>
+<cctype>
 ```
 
 # the following are not allowed in c++ modules (except for STL containers in CPP08 nad CPP09)
