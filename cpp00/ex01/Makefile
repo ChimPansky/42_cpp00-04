@@ -14,7 +14,8 @@ CFLAGS = -Wall -Wextra -Werror -std=c++98
 
 FILENAMES = main.cpp \
 		Phonebook.cpp \
-		Contact.cpp
+		Contact.cpp \
+		utils.cpp
 
 SRC = $(addprefix $(SOURCE_DIR)/, $(FILENAMES))
 OBJ = $(SRC:%.cpp=$(BUILD_DIR)/%.o)
