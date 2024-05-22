@@ -11,11 +11,12 @@ BUILD_DIR = build
 
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
+CFLAGS += -g
 
 FILENAMES = main.cpp \
 		Phonebook.cpp \
 		Contact.cpp \
-		utils.cpp
+		phonebook_utils.cpp
 
 SRC = $(addprefix $(SOURCE_DIR)/, $(FILENAMES))
 OBJ = $(SRC:%.cpp=$(BUILD_DIR)/%.o)

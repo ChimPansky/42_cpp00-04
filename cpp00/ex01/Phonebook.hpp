@@ -2,14 +2,13 @@
 # define PHONEBOOK_HPP
 
 # include "Contact.hpp"
-# define MAX_CONTACTS 8
-# define COLUMN_WIDTH 10
-# define COLUMN_SEPARATOR '|'
+# include "phonebook_utils.hpp"
 
 class Phonebook {
 	private:
-	Contact _contacts[MAX_CONTACTS];
-	int		_entries;
+	Contact 	_contacts[MAX_CONTACTS];
+	std::string _fieldNames[FIELD_COUNT];
+	int			_entries;
 
 	public:
 	Phonebook();
