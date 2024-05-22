@@ -34,7 +34,7 @@ std::string	strToUpper(std::string str) {
 std::string	readLine(std::string prompt) {
 	std::string input;
 
-	std::cout << prompt << std::endl;
+	std::cout << prompt << ": ";
 	std::getline(std::cin, input);
 	return (input);
 }

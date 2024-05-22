@@ -53,6 +53,17 @@ void	Phonebook::printContactDetail(int contactIndex) {
 
 void	Phonebook::add() {
 	std::cout << "adding..." << std::endl;
+	std::string	userInput[FIELD_COUNT];
+
+	for (int i = FIELD_FNAME; i < FIELD_COUNT; i++) {
+		while (1) {
+			userInput[i] = readLine(_fieldNames[i]);
+			if (userInput[i].length() > 0)
+				break ;
+			std::cout << _fieldNames[i] << " cannot be empty!" << std::endl;
+		}
+	}
+	this->addContact(Contact(userInput[FIELD_FNAME], userInput[FIELD_LNAME], userInput[FIELD_NICK], userInput[FIELD_PHONENR], userInput[FIELD_SECRET]));
 }
 
 void	Phonebook::search() {
