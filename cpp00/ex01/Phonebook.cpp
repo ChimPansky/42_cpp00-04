@@ -2,6 +2,7 @@
 #include "Contact.hpp"
 #include "phonebook_utils.hpp"
 #include <iostream>
+#include <string>
 
 Phonebook::Phonebook() {
 	std::cout << "Phonebook Default Constructor" << std::endl;
@@ -52,7 +53,6 @@ void	Phonebook::printContactDetail(int contactIndex) {
 }
 
 void	Phonebook::add() {
-	std::cout << "adding..." << std::endl;
 	std::string	userInput[FIELD_COUNT];
 
 	for (int i = FIELD_FNAME; i < FIELD_COUNT; i++) {
@@ -67,5 +67,14 @@ void	Phonebook::add() {
 }
 
 void	Phonebook::search() {
-	std::cout << "searching..." << std::endl;
+	int	userInput;
+
+	this->printContacts();
+	while (1) {
+		userInput = std::stoi(readLine("Which contact do you want to display? (Index): "));
+		if (userInput >= 0)
+			break ;
+	}
+	std::cout << "searchindex: " << userInput << std::endl;
+	this->printContactDetail(userInput);
 }
