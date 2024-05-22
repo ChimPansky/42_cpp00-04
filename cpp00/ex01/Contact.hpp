@@ -20,7 +20,6 @@ class Contact {
 	std::string	getLastName();
 
 	void	printOverview();
-	void	printField(std::string field);
 	void	printDetail();
 };
 
