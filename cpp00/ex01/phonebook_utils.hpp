@@ -22,5 +22,6 @@ void		printField(std::string field, int width, char separator);
 std::string	intToString(int nbr);
 std::string	strToUpper(std::string str);
 std::string	readLine(std::string prompt);
+bool		strToInt(const std::string& str, int& target);
 
 #endif

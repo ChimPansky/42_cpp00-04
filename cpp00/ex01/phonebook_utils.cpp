@@ -38,3 +38,12 @@ std::string	readLine(std::string prompt) {
 	std::getline(std::cin, input);
 	return (input);
 }
+
+bool		strToInt(const std::string& str, int& target) {
+	std::stringstream	strStream(str);
+
+	strStream >> target;
+	if (strStream.fail())
+		return (false);
+	return (true);
+}

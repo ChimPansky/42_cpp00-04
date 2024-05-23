@@ -35,7 +35,7 @@ int	main() {
 	exit = false;
 	while (!exit)
 	{
-		userInput = strToUpper(readLine("Please enter a command (ADD/SEARCH/EXIT)."));
+		userInput = strToUpper(readLine("Please enter a command (ADD/SEARCH/EXIT)"));
 		if (userInput == "ADD") {
 			awesomePB.add();
 			awesomePB.printContacts();

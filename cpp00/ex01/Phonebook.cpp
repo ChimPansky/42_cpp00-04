@@ -2,6 +2,7 @@
 #include "Contact.hpp"
 #include "phonebook_utils.hpp"
 #include <iostream>
+#include <sstream>
 #include <string>
 
 Phonebook::Phonebook() {
@@ -22,7 +23,7 @@ Phonebook::~Phonebook() {
 
 void	Phonebook::addContact(Contact newContact) {
 	this->_contacts[_entries % MAX_CONTACTS] = newContact;
-	this->_contacts[_entries % MAX_CONTACTS].setIndex(_entries);
+	this->_contacts[_entries % MAX_CONTACTS].setIndex(_entries % MAX_CONTACTS);
 	_entries++;
 }
 
@@ -67,14 +68,16 @@ void	Phonebook::add() {
 }
 
 void	Phonebook::search() {
-	int	userInput;
+	std::string	userInput;
+	int			searchIndex;
 
 	this->printContacts();
 	while (1) {
-		userInput = std::stoi(readLine("Which contact do you want to display? (Index): "));
-		if (userInput >= 0)
+		userInput = readLine("Which contact do you want to display? (Index)");
+		if (strToInt(userInput, searchIndex) && searchIndex >= 0 && searchIndex < MAX_CONTACTS)
 			break ;
+		std::cout << "Invalid index!" << std::endl;
 	}
-	std::cout << "searchindex: " << userInput << std::endl;
-	this->printContactDetail(userInput);
+	std::istringstream(userInput) >> searchIndex;
+	this->printContactDetail(searchIndex);
 }
