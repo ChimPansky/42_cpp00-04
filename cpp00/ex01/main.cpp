@@ -3,9 +3,6 @@
 #include <iostream>
 #include <string>
 
-#define SUCCESS 0
-#define FAILURE 1
-
 int	main() {
 	Phonebook	awesomePB;
 	std::string	userInput;
@@ -43,7 +40,7 @@ int	main() {
 		}
 		else if (userInput == "SEARCH")
 			awesomePB.search();
-		else if (userInput == "EXIT") {
+		else if (userInput == "EXIT" || std::cin.eof()) {
 			exit = true;
 			std::cout << "exiting..." << std::endl;
 		}

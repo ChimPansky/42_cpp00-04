@@ -59,6 +59,8 @@ void	Phonebook::add() {
 	for (int i = FIELD_FNAME; i < FIELD_COUNT; i++) {
 		while (1) {
 			userInput[i] = readLine(_fieldNames[i]);
+			if (std::cin.eof())
+				return ;
 			if (userInput[i].length() > 0)
 				break ;
 			std::cout << _fieldNames[i] << " cannot be empty!" << std::endl;
@@ -74,6 +76,8 @@ void	Phonebook::search() {
 	this->printContacts();
 	while (1) {
 		userInput = readLine("Which contact do you want to display? (Index)");
+		if (std::cin.eof())
+				return ;
 		if (strToInt(userInput, searchIndex) && searchIndex >= 0 && searchIndex < MAX_CONTACTS)
 			break ;
 		std::cout << "Invalid index!" << std::endl;

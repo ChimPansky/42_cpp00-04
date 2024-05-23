@@ -3,6 +3,8 @@
 
 #include <string>
 
+# define SUCCESS 0
+# define FAILURE 1
 # define MAX_CONTACTS 8
 # define COLUMN_WIDTH 10
 # define COLUMN_SEPARATOR '|'

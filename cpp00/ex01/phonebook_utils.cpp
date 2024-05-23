@@ -1,7 +1,9 @@
+#include "phonebook_utils.hpp"
 #include <sstream>
 #include <string>
 #include <iostream>
 #include <iomanip>
+#include <cstdlib>
 
 std::string	truncate(std::string str, size_t len) {
 	std::string truncated_string;
