@@ -34,6 +34,7 @@ void	Phonebook::_printContacts() {
 		std::cout << COLUMN_SEPARATOR;
 		_contacts[i].printOverview();
 	}
+	std::cout << std::endl;
 }
 
 void	Phonebook::_printContactDetail(int contactIndex) {
@@ -64,6 +65,14 @@ bool	Phonebook::_fieldValueIsValid(const std::string& str) {
 	return (valid);
 }
 
+bool	Phonebook::_strIsNum(const std::string& str) {
+	for (int i = 0; i < (int)str.length(); i++) {
+		if (!std::isdigit(str[i]))
+			return (false);
+	}
+	return (true);
+}
+
 bool	Phonebook::_strToInt(const std::string& str, int& target) {
 	std::stringstream	strStream(str);
 
@@ -77,6 +86,7 @@ bool	Phonebook::_strToInt(const std::string& str, int& target) {
 void	Phonebook::add() {
 	std::string	userInput[FIELD_COUNT];
 
+	std::cout << std::endl;
 	for (int i = FIELD_FNAME; i < FIELD_COUNT; i++) {
 		while (1) {
 			userInput[i] = readLine(_fieldNames[i]);
@@ -90,6 +100,7 @@ void	Phonebook::add() {
 				break ;
 		}
 	}
+	std::cout << std::endl;
 	this->_addContact(Contact(userInput[FIELD_FNAME], userInput[FIELD_LNAME], userInput[FIELD_NICK], userInput[FIELD_PHONENR], userInput[FIELD_SECRET]));
 }
 
@@ -99,12 +110,12 @@ void	Phonebook::search() {
 
 	_printContacts();
 	while (1) {
-		userInput = readLine("Which contact details do you want to display? (Index)");
+		userInput = strTrim(readLine("Which contact details do you want to display? (Index)"));
 		if (std::cin.eof())
 				return ;
-		if (_strToInt(userInput, searchIndex) && searchIndex > 0 && searchIndex <= MAX_CONTACTS)
+		if (_strIsNum(userInput) && _strToInt(userInput, searchIndex) && searchIndex > 0 && searchIndex <= MAX_CONTACTS)
 			break ;
-		std::cout << "Invalid index: " << searchIndex << std::endl;
+		std::cout << "Invalid index: " << userInput << std::endl;
 	}
 	std::istringstream(userInput) >> searchIndex;
 	this->_printContactDetail(searchIndex - 1);

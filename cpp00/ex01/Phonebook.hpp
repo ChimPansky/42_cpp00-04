@@ -16,6 +16,7 @@ class Phonebook {
 	void		_printContacts();
 	void		_printContactDetail(int index);
 	bool		_fieldValueIsValid(const std::string& str);
+	bool		_strIsNum(const std::string& str);
 	bool		_strToInt(const std::string& str, int& target);
 
 	public:
