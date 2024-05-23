@@ -21,7 +21,7 @@ Phonebook::~Phonebook() {}
 // private methods:
 void	Phonebook::_addContact(Contact newContact) {
 	this->_contacts[_entries % MAX_CONTACTS] = newContact;
-	this->_contacts[_entries % MAX_CONTACTS].setIndex(_entries % MAX_CONTACTS);
+	this->_contacts[_entries % MAX_CONTACTS].setIndex(_entries % MAX_CONTACTS + 1);
 	_entries++;
 }
 
@@ -37,7 +37,7 @@ void	Phonebook::_printContacts() {
 }
 
 void	Phonebook::_printContactDetail(int contactIndex) {
-	if (contactIndex >= MAX_CONTACTS || contactIndex < 0)	{
+	if (contactIndex > MAX_CONTACTS || contactIndex < 0)	{
 		std::cerr << "Error: Index " << contactIndex << " out of range." << std::endl;
 		return ;
 	}
@@ -102,10 +102,10 @@ void	Phonebook::search() {
 		userInput = readLine("Which contact details do you want to display? (Index)");
 		if (std::cin.eof())
 				return ;
-		if (_strToInt(userInput, searchIndex) && searchIndex >= 0 && searchIndex < MAX_CONTACTS)
+		if (_strToInt(userInput, searchIndex) && searchIndex > 0 && searchIndex <= MAX_CONTACTS)
 			break ;
 		std::cout << "Invalid index: " << searchIndex << std::endl;
 	}
 	std::istringstream(userInput) >> searchIndex;
-	this->_printContactDetail(searchIndex);
+	this->_printContactDetail(searchIndex - 1);
 }
