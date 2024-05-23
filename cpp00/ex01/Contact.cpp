@@ -2,9 +2,7 @@
 #include "phonebook_utils.hpp"
 #include <iostream>
 
-Contact::Contact() {
-	std::cout << "Contact Default Constructor" << std::endl;
-}
+Contact::Contact() {}
 
 Contact::Contact(std::string fName, std::string lName,
 	std::string nick, std::string phoneNr, std::string secret) {
@@ -15,9 +13,7 @@ Contact::Contact(std::string fName, std::string lName,
 	this->_fields[FIELD_SECRET] = secret;
 }
 
-Contact::~Contact() {
-	std::cout << "Contact Destructor" << std::endl;
-}
+Contact::~Contact() {}
 
 void			Contact::printOverview() {
 	for (int i = 0; i < FIELD_PHONENR; i++)

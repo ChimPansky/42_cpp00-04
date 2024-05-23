@@ -6,7 +6,6 @@
 #include <string>
 
 Phonebook::Phonebook() {
-	std::cout << "Phonebook Default Constructor" << std::endl;
 	_entries = 0;
 	_fieldNames[FIELD_INDEX] = "Index";
 	_fieldNames[FIELD_FNAME] = "First Name";
@@ -17,7 +16,6 @@ Phonebook::Phonebook() {
 }
 
 Phonebook::~Phonebook() {
-	std::cout << "Phonebook Destructor" << std::endl;
 	_entries = 0;
 }
 
@@ -28,7 +26,7 @@ void	Phonebook::addContact(Contact newContact) {
 }
 
 void	Phonebook::printContacts() {
-	std::cout << COLUMN_SEPARATOR;
+	std::cout << std::endl << COLUMN_SEPARATOR;
 	for (int i = 0; i < FIELD_PHONENR; i++)
 		printField(_fieldNames[i], COLUMN_WIDTH, COLUMN_SEPARATOR);
 	std::cout << std::endl;
@@ -75,7 +73,7 @@ void	Phonebook::search() {
 
 	this->printContacts();
 	while (1) {
-		userInput = readLine("Which contact do you want to display? (Index)");
+		userInput = readLine("Which contact details do you want to display? (Index)");
 		if (std::cin.eof())
 				return ;
 		if (strToInt(userInput, searchIndex) && searchIndex >= 0 && searchIndex < MAX_CONTACTS)
