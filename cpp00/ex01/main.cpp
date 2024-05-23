@@ -6,28 +6,25 @@
 int	main() {
 	Phonebook	awesomePB;
 	std::string	userInput;
-	bool		exit;
 
-	//awesomePB.printContacts();
-
-
-	exit = false;
-	while (!exit)
+	while (true)
 	{
-		userInput = strToUpper(readLine("Please enter a command (ADD/SEARCH/EXIT)"));
-		if (userInput == "ADD") {
-			awesomePB.add();
-			awesomePB.printContacts();
-			awesomePB.printContactDetail(0);
+		if (std::cin.eof()) {
+			std::cout << "OK BYE!" << std::endl;
+			break ;
 		}
-		else if (userInput == "SEARCH")
+		userInput = strTrim(readLine("Please enter a command (ADD/SEARCH/EXIT)"));
+		if (userInput == "ADD" || userInput == "add") {
+			awesomePB.add();
+		}
+		else if (userInput == "SEARCH" || userInput == "search")
 			awesomePB.search();
-		else if (userInput == "EXIT" || std::cin.eof()) {
-			exit = true;
-			std::cout << "exiting..." << std::endl;
+		else if (userInput == "EXIT" || userInput == "exit" || std::cin.eof()) {
+			std::cout << "OK BYE!" << std::endl;
+			break ;
 		}
 		else
-			std::cout << "Invalid command..." << std::endl;
+			std::cout << "Invalid command: " << userInput << std::endl;
 	}
 	return (SUCCESS);
 }

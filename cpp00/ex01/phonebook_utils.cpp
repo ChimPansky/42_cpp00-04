@@ -1,5 +1,5 @@
 #include "phonebook_utils.hpp"
-#include <sstream>
+#include <cstddef>
 #include <string>
 #include <iostream>
 #include <iomanip>
@@ -20,32 +20,29 @@ void		printField(std::string field, int width, char separator) {
 	std::cout << separator;
 }
 
-std::string	intToString(int nbr) {
-	std::ostringstream	temp_str;
-
-	temp_str << nbr;
-	return (temp_str.str());
-}
-
 std::string	strToUpper(std::string str) {
 	for (int i = 0; i < (int)str.size(); i++)
 		str[i] = std::toupper(str[i]);
 	return (str);
 }
 
-std::string	readLine(std::string prompt) {
+std::string	strTrim(const std::string& str) {
+	size_t	start = 0;
+	size_t	end = str.length();
+
+	while (start < str.length() && std::isspace(str[start]))
+		start++;
+	while (end > start && std::isspace(str[end - 1]))
+		end--;
+	return (str.substr(start, end - start));
+}
+
+std::string	readLine(const std::string& prompt) {
 	std::string input;
 
 	std::cout << prompt << ": ";
 	std::getline(std::cin, input);
+	if (std::cin.eof())
+		std::cout << "EOF" << std::endl;
 	return (input);
-}
-
-bool		strToInt(const std::string& str, int& target) {
-	std::stringstream	strStream(str);
-
-	strStream >> target;
-	if (strStream.fail())
-		return (false);
-	return (true);
 }

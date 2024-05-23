@@ -1,6 +1,7 @@
 #include "Contact.hpp"
 #include "phonebook_utils.hpp"
 #include <iostream>
+#include <sstream>
 
 Contact::Contact() {}
 
@@ -15,16 +16,25 @@ Contact::Contact(std::string fName, std::string lName,
 
 Contact::~Contact() {}
 
-void			Contact::printOverview() {
-	for (int i = 0; i < FIELD_PHONENR; i++)
-		printField(this->_fields[i], COLUMN_WIDTH, COLUMN_SEPARATOR);
-	std::cout << std::endl;
+// private methods:
+std::string		Contact::_intToString(int nbr) {
+	std::ostringstream	temp_str;
+
+	temp_str << nbr;
+	return (temp_str.str());
 }
 
+// public methods:
 std::string*	Contact::getFields() {
 	return (this->_fields);
 }
 
 void			Contact::setIndex(int index) {
-	this->_fields[FIELD_INDEX] = intToString(index);
+	this->_fields[FIELD_INDEX] = _intToString(index);
+}
+
+void			Contact::printOverview() {
+	for (int i = 0; i < FIELD_PHONENR; i++)
+		printField(this->_fields[i], COLUMN_WIDTH, COLUMN_SEPARATOR);
+	std::cout << std::endl;
 }

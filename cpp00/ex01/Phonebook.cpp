@@ -1,6 +1,7 @@
 #include "Phonebook.hpp"
 #include "Contact.hpp"
 #include "phonebook_utils.hpp"
+#include <cctype>
 #include <iostream>
 #include <sstream>
 #include <string>
@@ -15,17 +16,16 @@ Phonebook::Phonebook() {
 	_fieldNames[FIELD_SECRET] = "Darkest Secret";
 }
 
-Phonebook::~Phonebook() {
-	_entries = 0;
-}
+Phonebook::~Phonebook() {}
 
-void	Phonebook::addContact(Contact newContact) {
+// private methods:
+void	Phonebook::_addContact(Contact newContact) {
 	this->_contacts[_entries % MAX_CONTACTS] = newContact;
 	this->_contacts[_entries % MAX_CONTACTS].setIndex(_entries % MAX_CONTACTS);
 	_entries++;
 }
 
-void	Phonebook::printContacts() {
+void	Phonebook::_printContacts() {
 	std::cout << std::endl << COLUMN_SEPARATOR;
 	for (int i = 0; i < FIELD_PHONENR; i++)
 		printField(_fieldNames[i], COLUMN_WIDTH, COLUMN_SEPARATOR);
@@ -36,7 +36,7 @@ void	Phonebook::printContacts() {
 	}
 }
 
-void	Phonebook::printContactDetail(int contactIndex) {
+void	Phonebook::_printContactDetail(int contactIndex) {
 	if (contactIndex >= MAX_CONTACTS || contactIndex < 0)	{
 		std::cerr << "Error: Index " << contactIndex << " out of range." << std::endl;
 		return ;
@@ -51,6 +51,29 @@ void	Phonebook::printContactDetail(int contactIndex) {
 	std::cout << std::endl;
 }
 
+bool	Phonebook::_fieldValueIsValid(const std::string& str) {
+	bool	valid;
+
+	valid = false;
+	for (int i = 0; i < (int)str.length(); i++) {
+		if (!std::isprint(str[i]))
+			return (false);
+		if (!valid && !std::isspace(str[i]))
+			valid = true;
+	}
+	return (valid);
+}
+
+bool	Phonebook::_strToInt(const std::string& str, int& target) {
+	std::stringstream	strStream(str);
+
+	strStream >> target;
+	if (strStream.fail())
+		return (false);
+	return (true);
+}
+
+// public methods:
 void	Phonebook::add() {
 	std::string	userInput[FIELD_COUNT];
 
@@ -59,27 +82,30 @@ void	Phonebook::add() {
 			userInput[i] = readLine(_fieldNames[i]);
 			if (std::cin.eof())
 				return ;
-			if (userInput[i].length() > 0)
+			if (userInput[i].length() == 0)
+				std::cout << "Field " << _fieldNames[i] << " cannot be empty!" << std::endl;
+			else if (!_fieldValueIsValid(userInput[i]))
+				std::cout << "Field " << _fieldNames[i] << " is invalid!" << std::endl;
+			else
 				break ;
-			std::cout << _fieldNames[i] << " cannot be empty!" << std::endl;
 		}
 	}
-	this->addContact(Contact(userInput[FIELD_FNAME], userInput[FIELD_LNAME], userInput[FIELD_NICK], userInput[FIELD_PHONENR], userInput[FIELD_SECRET]));
+	this->_addContact(Contact(userInput[FIELD_FNAME], userInput[FIELD_LNAME], userInput[FIELD_NICK], userInput[FIELD_PHONENR], userInput[FIELD_SECRET]));
 }
 
 void	Phonebook::search() {
 	std::string	userInput;
 	int			searchIndex;
 
-	this->printContacts();
+	_printContacts();
 	while (1) {
 		userInput = readLine("Which contact details do you want to display? (Index)");
 		if (std::cin.eof())
 				return ;
-		if (strToInt(userInput, searchIndex) && searchIndex >= 0 && searchIndex < MAX_CONTACTS)
+		if (_strToInt(userInput, searchIndex) && searchIndex >= 0 && searchIndex < MAX_CONTACTS)
 			break ;
-		std::cout << "Invalid index!" << std::endl;
+		std::cout << "Invalid index: " << searchIndex << std::endl;
 	}
 	std::istringstream(userInput) >> searchIndex;
-	this->printContactDetail(searchIndex);
+	this->_printContactDetail(searchIndex);
 }
