@@ -2,7 +2,6 @@
 # define CONTACT_HPP
 
 # include "phonebook_utils.hpp"
-# include <string>
 
 class Phonebook;
 
