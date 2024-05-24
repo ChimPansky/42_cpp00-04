@@ -5,6 +5,7 @@
 # include "phonebook_utils.hpp"
 
 # define MAX_CONTACTS 8
+# define PHONE_SPECIAL_CHARS "+-/() "
 
 class Phonebook {
 	private:
@@ -16,6 +17,7 @@ class Phonebook {
 	void		_printContacts();
 	void		_printContactDetail(int index);
 	bool		_fieldValueIsValid(const std::string& str);
+	bool		_phoneIsValid(const std::string& str);
 	bool		_strIsNum(const std::string& str);
 	bool		_strToInt(const std::string& str, int& target);
 

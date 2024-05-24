@@ -5,7 +5,7 @@
 #include <iomanip>
 #include <cstdlib>
 
-std::string	truncate(std::string str, size_t len) {
+static std::string	truncate(std::string str, size_t len) {
 	std::string truncated_string;
 
 	if (str.length() <= len)
@@ -18,12 +18,6 @@ std::string	truncate(std::string str, size_t len) {
 void		printField(std::string field, int width, char separator) {
 	std::cout << std::setw(width) << truncate(field, width);
 	std::cout << separator;
-}
-
-std::string	strToUpper(std::string str) {
-	for (int i = 0; i < (int)str.size(); i++)
-		str[i] = std::toupper(str[i]);
-	return (str);
 }
 
 std::string	strTrim(const std::string& str) {

@@ -1,10 +1,11 @@
 #include "Phonebook.hpp"
 #include "Contact.hpp"
 #include "phonebook_utils.hpp"
-#include <cctype>
 #include <iostream>
 #include <sstream>
 #include <string>
+#include <cctype>
+#include <cstring>
 
 Phonebook::Phonebook() {
 	_entries = 0;
@@ -65,6 +66,19 @@ bool	Phonebook::_fieldValueIsValid(const std::string& str) {
 	return (valid);
 }
 
+bool	Phonebook::_phoneIsValid(const std::string& str) {
+	bool	valid;
+
+	valid = false;
+	for (int i = 0; i < (int)str.length(); i++) {
+		if (!std::isdigit(str[i]) && !std::strchr(PHONE_SPECIAL_CHARS, str[i]))
+			return (false);
+		if (!valid && std::isdigit(str[i]))
+			valid = true;
+	}
+	return (valid);
+}
+
 bool	Phonebook::_strIsNum(const std::string& str) {
 	for (int i = 0; i < (int)str.length(); i++) {
 		if (!std::isdigit(str[i]))
@@ -96,6 +110,10 @@ void	Phonebook::add() {
 				std::cout << "Field " << _fieldNames[i] << " cannot be empty!" << std::endl;
 			else if (!_fieldValueIsValid(userInput[i]))
 				std::cout << "Field " << _fieldNames[i] << " is invalid!" << std::endl;
+			else if (i == FIELD_PHONENR && !_phoneIsValid(userInput[i]))
+				std::cout << "Field " << _fieldNames[i]
+				<< " must contain digits and no other characters than: {"
+				<< PHONE_SPECIAL_CHARS << "}" << std::endl;
 			else
 				break ;
 		}
