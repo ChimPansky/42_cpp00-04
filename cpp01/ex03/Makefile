@@ -1,4 +1,4 @@
-NAME = zombiehorde
+NAME = human
 
 #Colors
 DEF_COLOR = \033[0;39m
@@ -14,8 +14,9 @@ CFLAGS = -Wall -Wextra -Werror -std=c++98
 CFLAGS += -g
 
 FILENAMES = main.cpp \
-			Zombie.cpp \
-			zombieHorde.cpp
+			Weapon.cpp \
+			HumanA.cpp \
+			HumanB.cpp
 
 SRC = $(addprefix $(SOURCE_DIR)/, $(FILENAMES))
 OBJ = $(SRC:%.cpp=$(BUILD_DIR)/%.o)
