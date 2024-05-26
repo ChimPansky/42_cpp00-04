@@ -1,12 +1,19 @@
 #include "Zombie.hpp"
+#include <iostream>
 
 int	main() {
 	Zombie	z1("Ed");
-	Zombie	z2("Edd");
-	Zombie	z3("Eddie");
-
 	z1.announce();
-	z2.announce();
-	z3.announce();
+
+	std::cout << std::endl;
+
+	Zombie* heapZombie = newZombie("Fred");
+	heapZombie->announce();
+	delete heapZombie;
+
+	std::cout << std::endl;
+
+	randomChump("Bob");
+
 	return (0);
 }

@@ -15,8 +15,7 @@ CFLAGS += -g
 
 FILENAMES = main.cpp \
 			Zombie.cpp \
-			newZombie.cpp \
-			randomChump.cpp
+			zombieHorde.cpp
 
 SRC = $(addprefix $(SOURCE_DIR)/, $(FILENAMES))
 OBJ = $(SRC:%.cpp=$(BUILD_DIR)/%.o)

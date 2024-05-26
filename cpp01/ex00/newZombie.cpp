@@ -1,5 +1,6 @@
 #include "Zombie.hpp"
 
 Zombie* newZombie(std::string name) {
-	(void)name;
+	Zombie* heapZombie = new Zombie(name);
+	return (heapZombie);
 }
