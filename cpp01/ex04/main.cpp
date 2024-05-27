@@ -22,12 +22,12 @@ int main (int argc, char **argv) {
 		return (ERROR);
 	if (openOutFile(outFileStream, outFilePath) != SUCCESS)
 		return (inFileStream.close(), ERROR);
-	if (readFileContent(inFileStream, inFileContent) != SUCCESS)
-		return (inFileStream.close(), outFileStream.close(), ERROR);
-	if (stringReplace(inFileContent, newContent, argv[2], argv[3]) != SUCCESS)
-		return (inFileStream.close(), outFileStream.close(), ERROR);
+	inFileContent = readFileContent(inFileStream);
+	std::cout << inFileContent << std::endl;
+	newContent = stringReplace(inFileContent, argv[2], argv[3]);
 
-	outFileStream << newContent;
+	// outFileStream << "Test" << std::endl;
+	outFileStream << newContent << std::endl;
 	if (outFileStream.fail()) {
 		std::cerr << "Error writing to file: " << outFilePath << std::endl;
 		return (inFileStream.close(), outFileStream.close(), ERROR);

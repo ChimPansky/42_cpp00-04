@@ -13,7 +13,7 @@
 
 int	openInFile(std::ifstream& fStream, const std::string& fPath);
 int	openOutFile(std::ofstream& fStream, const std::string& fPath);
-int	readFileContent(std::ifstream& inStream, std::string& inContent);
-int	stringReplace(std::string src, std::string dst, char* searchStr, char* replaceStr);
+std::string	readFileContent(std::ifstream& inStream);
+std::string	stringReplace(const std::string& src, const char* searchStr, const char* replaceStr);
 
 #endif
