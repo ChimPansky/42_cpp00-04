@@ -11,7 +11,7 @@ class HumanB {
 	Weapon*		_weapon;
 
 	public:
-	HumanB(std::string name);
+	HumanB(const std::string& name);
 
 	void	setWeapon(Weapon& weapon);
 	void	attack(void);

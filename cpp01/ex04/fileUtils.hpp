@@ -11,7 +11,7 @@
 #  define ERROR 1
 # endif
 
-
+int			fileStrReplace(char *filePathCstr, char *searchExprCstr, char *replaceExprCstr);
 int			openInFile(std::ifstream& fStream, const std::string& fPath);
 int			openOutFile(std::ofstream& fStream, const std::string& fPath);
 std::string	readFileContent(std::ifstream& inStream);

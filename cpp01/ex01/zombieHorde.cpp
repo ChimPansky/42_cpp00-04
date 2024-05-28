@@ -1,6 +1,6 @@
 #include "Zombie.hpp"
 
-Zombie* zombieHorde(int N, std::string name) {
+Zombie* zombieHorde(int N, const std::string& name) {
 	if (N < 1)
 		return (NULL);
 	Zombie*	heapZombies = new Zombie[N];

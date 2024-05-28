@@ -6,11 +6,11 @@
 class Phonebook;
 
 class Contact {
-	private:
+  private:
 	std::string		_fields[FIELD_COUNT];
 	std::string		_intToString(int nbr);
 
-	public:
+  public:
 	Contact();
 	Contact(
 		std::string fname,
