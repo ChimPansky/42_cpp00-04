@@ -38,10 +38,24 @@ void	Harl::complain(std::string level) {
 		"ERROR"
 	};
 
-	for (int i = 0; i < 4; i++) {
+	int	i;
+	for (i = 0; i < 4; i++) {
 		if (levels[i] == level)
-			return (this->*harlFunctions[i])();
+			break;
 	}
-	std::cout << "[404 Not found] \nHarl was not able to complain. Level not found: "
-	<< level << std::endl;
+
+	switch (i) {
+		case 0:
+			(this->*harlFunctions[0])();
+		case 1:
+			(this->*harlFunctions[1])();
+		case 2:
+			(this->*harlFunctions[2])();
+		case 3:
+			(this->*harlFunctions[3])();
+			break;
+		default:
+			std::cout << "[404 Not found] \nHarl was not able to complain. Level not found: "
+				<< level << std::endl;
+	}
 }
