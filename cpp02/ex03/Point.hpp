@@ -12,10 +12,16 @@ class Point {
 	// constructors
   	Point();
 	Point(const float x, const float y);
+	Point(const Fixed& x, const Fixed& y);
 	Point(const Point& other);
 
 	// copy assignment operator overload:
 	Point& operator=(const Point& other);
+
+	// arithmetic operators:
+	Point	operator+(const Point& other);
+	Point	operator-(const Point& other);
+	Point	operator*(const Point& other);
 
 	// destructor
 	~Point();
@@ -24,6 +30,7 @@ class Point {
 	Fixed	getX() const;
 	Fixed	getY() const;
 
+	static const Fixed	scalarProduct(const Point& p1, const Point& p2);
 };
 
 std::ostream& operator<<(std::ostream& outStream, const Point& pointObject);
