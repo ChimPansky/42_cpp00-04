@@ -2,14 +2,14 @@
 #include "Point.hpp"
 
 // vec1 x vec2 = vec1.x * vec2.y - vec1.y * vec2.x
-static const Fixed	scalarProduct(const Point& p1, const Point& p2) {
+static const Fixed	crossProduct(const Point& p1, const Point& p2) {
 	return (p1.getX() * p2.getY() - p1.getY() * p2.getX());
 }
 
 bool	bsp(const Point a, const Point b, const Point  c, const Point point) {
-	Fixed	abToApCross = scalarProduct(b - a, point -a );
-	Fixed	bcToBpCross = scalarProduct(c - b, point - b);
-	Fixed	caToCpCross = scalarProduct(a - c, point - c);
+	Fixed	abToApCross = crossProduct(b - a, point -a );
+	Fixed	bcToBpCross = crossProduct(c - b, point - b);
+	Fixed	caToCpCross = crossProduct(a - c, point - c);
 
 	return ((abToApCross > 0 && bcToBpCross > 0 && caToCpCross > 0)
 		||  (abToApCross < 0 && bcToBpCross < 0 && caToCpCross < 0));
@@ -22,9 +22,9 @@ bool	bsp(const Point a, const Point b, const Point  c, const Point point) {
 	// Point	bp = point - b;
 	// Point	cp = point - c;
 
-	// Fixed	abToApCross = Point::scalarProduct(ab, ap);
-	// Fixed	bcToBpCross = Point::scalarProduct(bc, bp);
-	// Fixed	caToCpCross = Point::scalarProduct(ca, cp);
+	// Fixed	abToApCross = Point::crossProduct(ab, ap);
+	// Fixed	bcToBpCross = Point::crossProduct(bc, bp);
+	// Fixed	caToCpCross = Point::crossProduct(ca, cp);
 
 	// std::cout << "ab: " << ab << std::endl;
 	// std::cout << "bc: " << bc << std::endl;
