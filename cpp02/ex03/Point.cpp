@@ -11,9 +11,8 @@ Point::Point(const float x, const float y)
 Point::Point(const Fixed& x, const Fixed& y)
 	: _x(Fixed(x)), _y(Fixed(y)) {}
 
-Point::Point(const Point& other) {
-	(void)other;
-};
+Point::Point(const Point& other)
+	: _x(Fixed(other.getX())), _y(Fixed(other.getY())){};
 
 Point& Point::operator=(const Point& other) {
 	(void)other;
@@ -24,11 +23,11 @@ Point::~Point() {
 	std::cout << "Destructor called" << std::endl;
 }
 
-Point	Point::operator+(const Point& other) {
+Point	Point::operator+(const Point& other) const {
 	return (Point(this->getX() + other.getX(), this->getY() + other.getY()));
 }
 
-Point	Point::operator-(const Point& other) {
+Point	Point::operator-(const Point& other) const {
 	return (Point(this->getX() - other.getX(), this->getY() - other.getY()));
 }
 
