@@ -7,6 +7,7 @@ int	main() {
 	Fixed const c( 42.424564f );
 	Fixed const d( b );
 	a = Fixed( 1234.4321f);
+	//a = b;
 	std::cout << "a is " << a << std::endl;
 	std::cout << "b is " << b << std::endl;
 	std::cout << "c is " << c << std::endl;
@@ -25,5 +26,5 @@ int	main() {
 	// std::cout << "fix3.toFloat():" << fix3.toFloat() << std::endl;
 	// std::cout << "outstream << overload: " << fix3 << std::endl;
 
-	return (0);
+	// return (0);
 }

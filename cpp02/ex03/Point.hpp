@@ -29,8 +29,6 @@ class Point {
 	// getter and setter:
 	Fixed	getX() const;
 	Fixed	getY() const;
-
-	static const Fixed	scalarProduct(const Point& p1, const Point& p2);
 };
 
 std::ostream& operator<<(std::ostream& outStream, const Point& pointObject);

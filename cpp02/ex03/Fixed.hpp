@@ -6,7 +6,6 @@ class Fixed {
   private:
 	int					_value;
 	static const int	_precision = 8;
-	static const float	_epsilon;
 
   public:
 	// constructors
@@ -39,10 +38,10 @@ class Fixed {
 	bool operator!=(const Fixed& other) const;
 
 	// aritmetic operators:
-	Fixed	operator+(const Fixed& other);
-	Fixed	operator-(const Fixed& other);
-	Fixed	operator/(const Fixed& other);
-	Fixed	operator*(const Fixed& other);
+	Fixed	operator+(const Fixed& other) const;
+	Fixed	operator-(const Fixed& other) const;
+	Fixed	operator/(const Fixed& other) const;
+	Fixed	operator*(const Fixed& other) const;
 
 	// increment/decrement operators:
 	Fixed	operator++(int);	// postincrement

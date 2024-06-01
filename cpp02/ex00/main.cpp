@@ -9,7 +9,9 @@ int	main() {
 	std::cout << a.getRawBits() << std::endl;
 	std::cout << b.getRawBits() << std::endl;
 	std::cout << c.getRawBits() << std::endl;
-	
+
+	return (0);
+
 	// Fixed	fix1;
 	// Fixed	fix2(fix1);
 	// Fixed	fix3;
@@ -33,5 +35,5 @@ int	main() {
 	// fix3 = fix1;
 	// std::cout << "fix3 val:" << fix3.getRawBits() << std::endl;
 
-	return (0);
+	// return (0);
 }
