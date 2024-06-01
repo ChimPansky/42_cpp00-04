@@ -3,9 +3,18 @@
 
 int	main() {
 	ClapTrap	a;
-	ClapTrap	b;
+	ClapTrap	b("Clappy");
+	ClapTrap	c;
 
-	a.attack(b);
+	b.attack("some other trap");
+
+	b.takeDamage(5);
+
+	b.beRepaired(5);
+	b.takeDamage(5);
+	b.takeDamage(5);
+	b.takeDamage(5);
+	b.takeDamage(5);
 
 	return (0);
 
