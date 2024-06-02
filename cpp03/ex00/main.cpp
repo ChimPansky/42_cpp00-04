@@ -11,10 +11,10 @@ int	main() {
 	b.takeDamage(5);
 
 	b.beRepaired(5);
-	b.takeDamage(5);
-	b.takeDamage(5);
-	b.takeDamage(5);
-	b.takeDamage(5);
+	// b.takeDamage(5);
+	// b.takeDamage(5);
+	// b.takeDamage(5);
+	// b.takeDamage(5);
 
 	return (0);
 
