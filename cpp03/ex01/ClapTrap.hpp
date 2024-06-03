@@ -27,6 +27,8 @@ class ClapTrap {
 
   private:
 	static const std::string	_className;
+
+  protected:
 	std::string	_name;
 	int			_hp;
 	int			_mana;

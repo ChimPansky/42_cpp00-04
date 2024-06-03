@@ -1,12 +1,12 @@
-#include "ClapTrap.hpp"
+#include "ScavTrap.hpp"
 #include <iostream>
 
 int	main() {
-	ClapTrap	a;
-	ClapTrap	b("Clappy");
-	ClapTrap	c;
+	ScavTrap	a;
+	ScavTrap	b("Scavvy");
+	ScavTrap	c;
 
-	a.attack("Clapdude");
+	a.attack("Scavdude");
 	b.attack("Joey");
 	b.attack("Joey");
 	b.attack("Joey");
@@ -18,7 +18,7 @@ int	main() {
 	b.attack("Joey");
 	b.attack("Joey");
 	b.attack("Joey");
-	
+
 
 	b.takeDamage(5);
 	a.takeDamage(6);
