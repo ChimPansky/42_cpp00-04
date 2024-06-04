@@ -5,7 +5,7 @@
 const std::string ClapTrap::_className = "Claptrap";
 
 std::ostream& operator<<(std::ostream& outStream, const ClapTrap& clapTrapObject) {
-	outStream << clapTrapObject.getClassName() << " " << YELLOW_COLOR << clapTrapObject.getName();
+	outStream << YELLOW_COLOR << clapTrapObject.getName() << RESET_COLOR;
 	return (outStream);
 }
 
@@ -105,7 +105,9 @@ bool	ClapTrap::_hasEnoughHpAndMana() {
 	return (_hp > 0 && _mana > 0);
 }
 
+// public methods:
 void	ClapTrap::attack(const std::string& target) {
+	std::cout << _className << " method attack(): ";
 	if (!_hasEnoughHpAndMana()) {
 		_printFailure(Attack, &target);
 		return ;
@@ -115,6 +117,7 @@ void	ClapTrap::attack(const std::string& target) {
 }
 
 void	ClapTrap::takeDamage(unsigned int amount) {
+	std::cout << _className << " method takeDamage(): ";
 	if (!_hasEnoughHpAndMana()) {
 		_printFailure(Tank);
 		return ;
@@ -124,6 +127,7 @@ void	ClapTrap::takeDamage(unsigned int amount) {
 }
 
 void	ClapTrap::beRepaired(unsigned int amount) {
+	std::cout << _className << " method beRepaired(): ";
 	if (!_hasEnoughHpAndMana()) {
 		_printFailure(Heal);
 		return ;

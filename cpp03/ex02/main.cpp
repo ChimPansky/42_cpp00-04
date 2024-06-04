@@ -1,12 +1,11 @@
-#include "ScavTrap.hpp"
-#include <iostream>
+#include "FragTrap.hpp"
 
 int	main() {
-	ScavTrap	a;
-	ScavTrap	b("Scavvy");
-	ScavTrap	c;
+	FragTrap	a;
+	FragTrap	b("Fraggy");
+	FragTrap	c;
 
-	a.attack("Scavdude");
+	a.attack("Fragdude");
 	b.attack("Joey");
 	b.attack("Joey");
 	b.attack("Joey");
@@ -30,7 +29,7 @@ int	main() {
 	b.takeDamage(5);
 	b.beRepaired(5);
 	b.attack("Bob");
-	b.guardGate();
+	b.highFivesGuys();
 	// b.takeDamage(5);
 
 	return (0);

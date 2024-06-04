@@ -1,24 +1,23 @@
-#include "ScavTrap.hpp"
-#include <iostream>
+#include "DiamondTrap.hpp"
 
 int	main() {
-	ScavTrap	a;
-	ScavTrap	b("Scavvy");
-	ScavTrap	c;
+	DiamondTrap	a;
+	a.whoAmI();
+	DiamondTrap	b("Fancy Stone");
+	b.whoAmI();
+	DiamondTrap	c;
+	c.whoAmI();
 
-	a.attack("Scavdude");
-	b.attack("Joey");
-	b.attack("Joey");
-	b.attack("Joey");
-	b.attack("Joey");
-	b.attack("Joey");
-	b.attack("Joey");
-	b.attack("Joey");
-	b.attack("Joey");
-	b.attack("Joey");
-	b.attack("Joey");
-	b.attack("Joey");
-
+	a.attack("Just another stone");
+	a.attack("Just another stone");
+	a.attack("Just another stone");
+	a.attack("Just another stone");
+	a.attack("Just another stone");
+	b.attack("Just another stone");
+	b.attack("Just another stone");
+	b.attack("Just another stone");
+	b.attack("Just another stone");
+	b.attack("Just another stone");
 
 	b.takeDamage(20);
 	a.takeDamage(6);
@@ -30,7 +29,7 @@ int	main() {
 	b.takeDamage(5);
 	b.beRepaired(5);
 	b.attack("Bob");
-	b.guardGate();
+	b.highFivesGuys();
 	// b.takeDamage(5);
 
 	return (0);

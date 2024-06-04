@@ -14,6 +14,7 @@ void	ClapTrap::_initialize(const std::string& name) {
 	_hp = CLAP_DEFAULT_HP;
 	_mana = CLAP_DEFAULT_MANA;
 	_damage = CLAP_DEFAULT_DAMAGE;
+	std::cout << "ClapTrap::_initialize() _name: " << name << std::endl;
 }
 
 ClapTrap::ClapTrap() {
@@ -22,15 +23,17 @@ ClapTrap::ClapTrap() {
 }
 
 ClapTrap::ClapTrap(const std::string& name) {
-		std::cout << _className << ": String constructor called" << std::endl;
+		std::cout << _className << ": String constructor called with " << name << std::endl;
 		_initialize(name);
 }
+
+ClapTrap::ClapTrap(const std::string& name, const int hp, const int mana, const int damage)
+	: _name(name), _hp(hp), _mana(mana), _damage(damage) {}
 
 ClapTrap::ClapTrap(const ClapTrap& other)
 	: _hp(other._hp), _mana(other._mana), _damage(other._damage){
 	std::cout << _className << ": Copy constructor called" << std::endl;
 }
-
 
 ClapTrap& ClapTrap::operator=(const ClapTrap& other) {
 	std::cout << _className << ": Copy assignment operator called" << std::endl;
