@@ -23,10 +23,11 @@ int	main() {
 	// return 0;
 
 	const Animal* meta = new Animal();
-	const Animal* j = new Dog();
 	const Animal* i = new Cat();
-	std::cout << j->getType() << " " << std::endl;
-	std::cout << i->getType() << " " << std::endl;
+	const Animal* j = new Dog();
+	std::cout << "animal getType(): " << meta->getType() << " " << std::endl;
+	std::cout << "cat getType(): " << i->getType() << " " << std::endl;
+	std::cout << "dog getType(): " << j->getType() << " " << std::endl;
 	i->makeSound(); //will output the cat sound!
 	j->makeSound();
 	meta->makeSound();

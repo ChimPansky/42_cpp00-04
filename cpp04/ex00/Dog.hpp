@@ -13,6 +13,8 @@ class Dog: public Animal {
 	Dog& operator=(const Dog& other);
 	~Dog();
 
+	virtual void	makeSound() const;
+
   protected:
 	std::string	_type;
 
