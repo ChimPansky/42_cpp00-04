@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Animal.hpp"
+#include "Brain.hpp"
 #include <string>
 
 #define DOG_DEFAULT_TYPE	"Dog"
@@ -14,11 +15,12 @@ class Dog: public Animal {
 	~Dog();
 
 	void	makeSound() const;
-
-  protected:
-	std::string	_type;
+	Brain*	getBrain();
 
   private:
 	static const std::string	_className;
 	static const std::string	_sound;
+	Brain*						_brain;
+
+	void	_initialize(const std::string& type);
 };

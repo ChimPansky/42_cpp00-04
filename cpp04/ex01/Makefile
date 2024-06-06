@@ -1,4 +1,4 @@
-NAME = Animal
+NAME = zoo
 
 #Colors
 DEF_COLOR = \033[0;39m
@@ -12,13 +12,15 @@ BUILD_DIR = build
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 CFLAGS += -MMD -g
+# CFLAGS += -fsanitize=address,undefined,leak
 
 FILENAMES = main.cpp \
 			Animal.cpp \
 			Dog.cpp \
 			Cat.cpp \
 			WrongAnimal.cpp \
-			WrongCat.cpp
+			WrongCat.cpp \
+			Brain.cpp
 
 SRC = $(addprefix $(SOURCE_DIR)/, $(FILENAMES))
 OBJ = $(SRC:%.cpp=$(BUILD_DIR)/%.o)

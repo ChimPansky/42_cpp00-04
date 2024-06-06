@@ -1,34 +1,48 @@
 #include "Dog.hpp"
 #include "Cat.hpp"
+#include "WrongCat.hpp"
 #include <iostream>
 
 int	main() {
-	// Animal	a1;
-	// Animal	a2("Fred");
-	// Animal	a3(a2);
-	// a2 = a3;
+	const Animal* animal1 = new Animal();
+	const Animal* cat1 = new Cat();
+	const Animal* dog1 = new Dog();
 
-	// std::cout << "Animal 1 type: " << a1.getType() << std::endl;
-	// std::cout << "Animal 2 type: " << a2.getType() << std::endl;
-	// std::cout << "Animal 3 type: " << a3.getType() << std::endl;
+	std::cout << std::endl;
 
-	// Dog	dog1;
-	// std::cout << "Dog 1 type: " << dog1.getType() << std::endl;
-	// dog1.makeSound();
+	std::cout << "animal getType(): " << animal1->getType() << " " << std::endl;
+	std::cout << "cat getType(): " << cat1->getType() << " " << std::endl;
+	std::cout << "dog getType(): " << dog1->getType() << " " << std::endl;
 
-	// Cat	cat1;
-	// std::cout << "Cag 1 type: " << cat1.getType() << std::endl;
-	// cat1.makeSound();
+	std::cout << std::endl;
 
-	// return 0;
+	animal1->makeSound();
+	cat1->makeSound();
+	dog1->makeSound();
 
-	const Animal* meta = new Animal();
-	const Animal* i = new Cat();
-	const Animal* j = new Dog();
-	std::cout << "animal getType(): " << meta->getType() << " " << std::endl;
-	std::cout << "cat getType(): " << i->getType() << " " << std::endl;
-	std::cout << "dog getType(): " << j->getType() << " " << std::endl;
-	i->makeSound(); //will output the cat sound!
-	j->makeSound();
-	meta->makeSound();
+	std::cout << std::endl;
+
+	delete animal1;
+	delete cat1;
+	delete dog1;
+
+	std::cout << "\n---WrongAnimal and WrongCat tests: \n---" << std::endl;
+
+	const WrongAnimal* wrongAnimal1 = new WrongAnimal();
+	const WrongAnimal* wrongCat1 = new WrongCat();
+
+	std::cout << std::endl;
+
+	std::cout << "wrongAnimal getType(): " << wrongAnimal1->getType() << " " << std::endl;
+	std::cout << "wrongCat getType(): " << wrongCat1->getType() << " " << std::endl;
+
+	std::cout << std::endl;
+
+	wrongAnimal1->makeSound();
+	wrongCat1->makeSound();
+
+	std::cout << std::endl;
+
+	delete wrongAnimal1;
+	delete wrongCat1;
 }

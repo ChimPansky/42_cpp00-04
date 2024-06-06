@@ -21,7 +21,6 @@ class Animal {
 	std::string	_type;
 	void	_initialize(const std::string& type);
 
-
   private:
 	static const std::string	_className;
 	static const std::string	_sound;

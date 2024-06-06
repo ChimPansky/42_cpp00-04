@@ -1,26 +1,25 @@
 #pragma once
 
 #include <string>
-#define ANIMAL_DEFAULT_TYPE	"Unknown Animal"
+#define WRONG_ANIMAL_DEFAULT_TYPE	"Unkown Wrong Animal"
 
-class Animal {
+class WrongAnimal {
   public:
-	Animal();
-	Animal(const std::string& type);
-	Animal(const Animal& other);
-	Animal& operator=(const Animal& other);
-	virtual ~Animal();
+	WrongAnimal();
+	WrongAnimal(const std::string& type);
+	WrongAnimal(const WrongAnimal& other);
+	WrongAnimal& operator=(const WrongAnimal& other);
+	virtual ~WrongAnimal();
 
 	// Getters:
 	std::string	getType() const;
 
 	// public methods:
-	virtual void	makeSound() const;
+	void	makeSound() const;
 
   protected:
 	std::string	_type;
 	void	_initialize(const std::string& type);
-
 
   private:
 	static const std::string	_className;
