@@ -12,7 +12,7 @@ BUILD_DIR = build
 CC = c++
 CFLAGS = -std=c++98
 CFLAGS += -MMD -g
-# CFLAGS += -Wall -Wextra -Werror
+CFLAGS += -Wall -Wextra -Werror
 # CFLAGS += -fsanitize=address,undefined,leak
 
 FILENAMES = main.cpp \
@@ -21,6 +21,9 @@ FILENAMES = main.cpp \
 			Cure.cpp \
 			Ice.cpp \
 			MateriaSource.cpp
+
+FILENAMES += helperClasses/List.cpp \
+			 helperClasses/MateriaCleaner.cpp
 
 SRC = $(addprefix $(SOURCE_DIR)/, $(FILENAMES))
 OBJ = $(SRC:%.cpp=$(BUILD_DIR)/%.o)

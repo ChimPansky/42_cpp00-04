@@ -2,6 +2,7 @@
 
 #include <string>
 
+
 class ICharacter;
 
 class	AMateria {
@@ -9,8 +10,11 @@ class	AMateria {
 	std::string	_type;
 
   public:
+	AMateria();
 	AMateria(std::string const & type);
-	~AMateria();
+	AMateria(const AMateria& other);
+	AMateria& operator=(const AMateria& other);
+	virtual ~AMateria();
 
 	std::string const & getType() const;
 

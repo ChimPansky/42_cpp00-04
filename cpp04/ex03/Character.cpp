@@ -1,12 +1,38 @@
 #include "Character.hpp"
 #include <iostream>
 
-Character::Character() {}
+
+MateriaCleaner	Character::_materiaCleaner;
+
+Character::Character() {
+	for (int i= 0; i < 4; i++) {
+		_materiaInventory[i] = 0;
+	}
+}
 
 Character::Character(std::string name)
-	: _name(name) {}
+	: _name(name) {
+	for (int i= 0; i < 4; i++) {
+		_materiaInventory[i] = 0;
+	}
+}
 
-Character::~Character() {}
+Character::Character(const Character& other) {
+	*this = other;
+}
+
+Character& Character::operator=(const Character& other) {
+	if (this != &other) {
+		_name = other._name;
+		_deleteInventory();
+		_cloneInventory(other);
+	}
+	return *this;
+}
+
+Character::~Character() {
+	_deleteInventory();
+}
 
 std::string const & Character::getName() const{
 	return _name;
@@ -36,6 +62,7 @@ void				Character::unequip(int idx) {
 		std::cerr << "Character::unequip(): Cannot unequip empty slot " << idx << std::endl;
 		return ;
 	}
+	_materiaCleaner.addMateria(_materiaInventory[idx]);
 	_materiaInventory[idx] = 0;
 	std::cout << "Character::unequip(): Successfully unequipped slot " << idx << std::endl;
 	// how to not delete the Matera and avoid leaks at the same time??
@@ -59,5 +86,30 @@ void	Character::printInventory() const {
 			std::cout << "{empty slot}" << std::endl;
 		else
 			std::cout << _materiaInventory[i]->getType() << std::endl;
+	}
+}
+
+void	Character::_deleteInventory() {
+	// check if there are duplicate pointers to avoid double deletes...
+	for (int i = 0; i < 4; i++) {
+		for (int j = i + 1; j < 4; j++) {
+			if (_materiaInventory[i] == 0)
+				continue;
+			if (_materiaInventory[i] == _materiaInventory[j])
+				_materiaInventory[j] = 0;
+		}
+	}
+	for (int i = 0; i < 4; i++) {
+		if (_materiaInventory[i] != 0) {
+			delete _materiaInventory[i];
+			_materiaInventory[i] = 0;
+		}
+	}
+};
+
+void	Character::_cloneInventory(const Character& other) {
+	for (int i = 0; i < 4; i++) {
+		if (other._materiaInventory[i] != 0)
+			_materiaInventory[i] = other._materiaInventory[i]->clone();
 	}
 }
