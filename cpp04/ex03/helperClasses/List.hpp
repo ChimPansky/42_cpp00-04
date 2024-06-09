@@ -24,11 +24,13 @@ class List {
 	List& operator=(const List& other);
 	~List();
 
-	void	listDeleteAll();
-	size_t	lSize() const;
-	bool	lIsEmpty() const;
-	tNode*	lLast() const;
-	int		lAppend(void* value);
-	int		lRemove(void* value);
-	void	lPrint() const;
+	tNode*	getHead() const;
+	void*	getVal(tNode* node) const;
+	void	deleteAll();
+	size_t	size() const;
+	bool	isEmpty() const;
+	tNode*	last() const;
+	int		append(void* value);
+	int		remove(void* value);
+	void	print() const;
 };

@@ -13,12 +13,12 @@ List::List(const List& other)
 List&	List::operator=(const List& other) {
 	if (this == &other)
 		return *this;
-	if (!lIsEmpty())
-		listDeleteAll();
-	if (!other.lIsEmpty()) {
+	if (!this->isEmpty())
+		deleteAll();
+	if (!other.isEmpty()) {
 		tNode* cur = other._head;
 		while (cur) {
-			lAppend(cur->val);
+			append(cur->val);
 			cur = cur->next;
 		}
 	}
@@ -26,11 +26,19 @@ List&	List::operator=(const List& other) {
 }
 
 List::~List() {
-	listDeleteAll();
+	std::cout << "List Destructor: deleteAll..." << std::endl;
+	deleteAll();
 }
 
 // public methods:
-size_t	List::lSize() const {
+tNode*	List::getHead() const {
+	return _head;
+}
+void*	List::getVal(tNode* node) const {
+	return node->val;
+}
+
+size_t	List::size() const {
 	size_t	size = 0;
 	tNode*	cur = _head;
 	while (cur != 0) {
@@ -40,47 +48,48 @@ size_t	List::lSize() const {
 	return size;
 }
 
-bool	List::lIsEmpty() const {
+bool	List::isEmpty() const {
 	return (_head == 0);
 }
 
-tNode*	List::lLast() const {
+tNode*	List::last() const {
 	tNode*	end = _head;
 	while (end && end->next != 0)
 		end = end->next;
 	return end;
 }
 
-int	List::lAppend(void* value) {
+int	List::append(void* value) {
 	if (value == 0)
 		return FAILURE;
 	tNode*	newNode = new tNode;
 	if (newNode == 0)
-		return(std::cerr << "List::lAppend: Allocation failed!" << std::endl, FAILURE);
+		return(std::cerr << "List::append: Allocation failed!" << std::endl, FAILURE);
 	newNode->val = value;
 	newNode->next = 0;
-	if (lIsEmpty())
+	if (isEmpty())
 		_head = newNode;
 	else
-		lLast()->next = newNode;
+		last()->next = newNode;
 	return SUCCESS;
 }
 
-// private methods:
-void	List::listDeleteAll() {
+void	List::deleteAll() {
 	tNode* cur = _head;
 	tNode* next;
 	if (cur == 0)
 		return ;
 	while (cur != 0) {
 		next = cur->next;
+		std::cout << "deleteAll deleting: " << cur << " | val: " << cur->val << std::endl;
 		delete cur;
 		cur = next;
 	}
+	_head = 0;
 }
 
-int		List::lRemove(void* value) {
-	if (value == 0 || lIsEmpty())
+int		List::remove(void* value) {
+	if (value == 0 || isEmpty())
 		return FAILURE;
 	int	removedNodes = 0;
 	tNode*	prev = 0;
@@ -106,8 +115,8 @@ int		List::lRemove(void* value) {
 	return FAILURE;
 }
 
-void	List::lPrint() const {
-	if (lIsEmpty()) {
+void	List::print() const {
+	if (isEmpty()) {
 		std::cout << "{Empty List}" << std::endl;
 		return ;
 	}

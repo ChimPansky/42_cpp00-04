@@ -17,6 +17,7 @@ int main() {
 	me->equip(src->createMateria("ice"));
 	me->equip(src->createMateria("ice"));
 	me->unequip(0);
+	me->unequip(1);
 	delete src;
 	delete me;
 

@@ -25,5 +25,6 @@ class Character : public ICharacter{
 	void				_deleteInventory();
 	void				_cloneInventory(const Character& other);
 
+	static List				_droppedMaterias;
 	static MateriaCleaner	_materiaCleaner;
 };
