@@ -1,7 +1,7 @@
 #pragma once
 
 #include <string>
-#define CLAP_DEFAULT_NAME	"CUnknown"
+#define CLAP_DEFAULT_NAME	"ClapTrap Unknown"
 #define CLAP_DEFAULT_HP		10
 #define CLAP_DEFAULT_MANA	10
 #define CLAP_DEFAULT_DAMAGE	0
@@ -17,13 +17,25 @@ const std::string GREY_COLOR = "\033[90m";
 
 class ClapTrap {
   public:
+	ClapTrap();
+	ClapTrap(const std::string& name);
+	ClapTrap(const ClapTrap& other);
+	ClapTrap& operator=(const ClapTrap& other);
+	~ClapTrap(); // TODO add virtual...
+
 	enum ActionType {
 		Attack = 1,
 		Tank = 2,
 		Heal = 3,
-		NoHp = 4,
-		NoMana = 5
 	};
+
+	// public methods
+	std::string	getClassName() const;
+	std::string	getName() const;
+
+	void		attack(const std::string& target);
+	void		takeDamage(unsigned int amount);
+	void		beRepaired(unsigned int amount);
 
   private:
 	static const std::string	_className;
@@ -33,27 +45,12 @@ class ClapTrap {
 	int			_hp;
 	int			_mana;
 	int			_damage;
-	void	_initialize(const std::string& name);
-	void	_printHpAndMana();
-	void	_printAction(ActionType aType, unsigned int amount, const std::string* target = NULL);
-	void	_printFailure(ActionType aType, const std::string* target = NULL);
-	bool	_hasEnoughHpAndMana();
+	void		_initialize(const std::string& name);
+	void		_printHpAndMana();
+	void		_printAction(ActionType aType, unsigned int amount, const std::string* target = NULL);
+	void		_printFailure(ActionType aType, const std::string* target = NULL);
+	bool		_hasEnoughHpAndMana();
 
-  public:
-	ClapTrap();
-	ClapTrap(const std::string& name);
-	ClapTrap(const std::string& name, const int hp, const int mana, const int damage);
-	ClapTrap(const ClapTrap& other);
-	ClapTrap& operator=(const ClapTrap& other);
-	~ClapTrap();
-
-	// Getters:
-	std::string	getClassName() const;
-	std::string	getName() const;
-
-	void	attack(const std::string& target);
-	void	takeDamage(unsigned int amount);
-	void	beRepaired(unsigned int amount);
 };
 
 std::ostream& operator<<(std::ostream& outStream, const ClapTrap& clapTrapObject);

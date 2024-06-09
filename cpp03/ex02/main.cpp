@@ -3,7 +3,8 @@
 int	main() {
 	FragTrap	a;
 	FragTrap	b("Fraggy");
-	FragTrap	c;
+	FragTrap	c(b);
+	c = b;
 
 	a.attack("Fragdude");
 	b.attack("Joey");

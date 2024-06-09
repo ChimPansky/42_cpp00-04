@@ -37,15 +37,7 @@ FragTrap::~FragTrap() {
 	std::cout << _className << ": Destructor called" << std::endl;
 }
 
-// private methods:
-void	FragTrap::_initialize(const std::string& name) {
-	_name = name;
-	_hp = FRAG_DEFAULT_HP;
-	_mana = FRAG_DEFAULT_MANA;
-	_damage = FRAG_DEFAULT_DAMAGE;
-}
-
-// public Getters:
+// public methods:
 std::string	FragTrap::getClassName() const {
 	return (_className);
 }
@@ -54,8 +46,15 @@ std::string FragTrap::getName() const {
 	return (_name);
 }
 
-// public methods:
 void	FragTrap::highFivesGuys(void) {
 	std::cout << "<" << _className << " method highFivesGuys()>: ";
-	std::cout << *this << " wants to High Five you. Can we get a whoop whoop? (Positivity level is over 9000)" << std::endl;
+	std::cout << *this << " wants to High Five you. Can we get a whoop whoop? (Positivity level is over 9000!!)" << std::endl;
+}
+
+// private methods:
+void	FragTrap::_initialize(const std::string& name) {
+	_name = name;
+	_hp = FRAG_DEFAULT_HP;
+	_mana = FRAG_DEFAULT_MANA;
+	_damage = FRAG_DEFAULT_DAMAGE;
 }

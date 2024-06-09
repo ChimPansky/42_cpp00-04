@@ -4,7 +4,8 @@
 int	main() {
 	ScavTrap	a;
 	ScavTrap	b("Scavvy");
-	ScavTrap	c;
+	ScavTrap	c(b);
+	c = b;
 
 	a.attack("Scavdude");
 	b.attack("Joey");

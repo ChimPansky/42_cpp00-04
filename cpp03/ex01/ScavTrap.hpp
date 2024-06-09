@@ -8,10 +8,6 @@
 #define SCAV_DEFAULT_DAMAGE	20
 
 class ScavTrap : public ClapTrap{
-  private:
-	static const std::string	_className;
-	void	_initialize(const std::string& name);
-
   public:
 	ScavTrap();
 	ScavTrap(const std::string& name);
@@ -19,12 +15,16 @@ class ScavTrap : public ClapTrap{
 	ScavTrap& operator=(const ScavTrap& other);
 	~ScavTrap();
 
-	// Getters:
+	// public methods
 	std::string	getClassName() const;
 	std::string	getName() const;
 
-	void	attack(const std::string& target);
-	void	guardGate();
+	void		attack(const std::string& target);
+	void		guardGate();
+
+  private:
+	static const std::string	_className;
+	void	_initialize(const std::string& name);
 };
 
 std::ostream& operator<<(std::ostream& outStream, const ScavTrap& scavTrapObject);

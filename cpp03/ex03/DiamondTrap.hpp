@@ -5,6 +5,7 @@
 #include <string>
 #define DIAMOND_DEFAULT_NAME	"DUnknown"
 
+// virtual??
 class DiamondTrap : virtual public FragTrap, virtual public ScavTrap{
   private:
 	std::string					_name;
