@@ -2,7 +2,7 @@
 
 #include "ClapTrap.hpp"
 #include <string>
-#define SCAV_DEFAULT_NAME	"Unknown"
+#define SCAV_DEFAULT_NAME	"ScavTrap Unknown"
 #define SCAV_DEFAULT_HP		100
 #define SCAV_DEFAULT_MANA	50
 #define SCAV_DEFAULT_DAMAGE	20
@@ -24,7 +24,6 @@ class ScavTrap : public ClapTrap{
 
   private:
 	static const std::string	_className;
-	void	_initialize(const std::string& name);
 };
 
 std::ostream& operator<<(std::ostream& outStream, const ScavTrap& scavTrapObject);

@@ -24,7 +24,6 @@ class ScavTrap : public virtual ClapTrap{
 
   private:
 	static const std::string	_className;
-	void	_initialize(const std::string& name);
 };
 
 std::ostream& operator<<(std::ostream& outStream, const ScavTrap& scavTrapObject);

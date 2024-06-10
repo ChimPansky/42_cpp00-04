@@ -5,9 +5,13 @@ int	main() {
 	{
 		std::cout << "---SECTION 1---" << std::endl;
 		ClapTrap*	a = new ClapTrap("Clappy");
+		std::cout << std::endl;
 		ClapTrap*	b = new FragTrap("Fraggy1");
+		std::cout << std::endl;
 		FragTrap*	c = new FragTrap("Fraggy2");
+		std::cout << std::endl;
 		FragTrap*	d = new FragTrap(*c);
+		std::cout << std::endl;
 		FragTrap*	e = new FragTrap;
 		*e = *d;
 		std::cout << std::endl;
@@ -40,6 +44,7 @@ int	main() {
 		std::cout << "---SECTION 2---" << std::endl;
 
 		FragTrap* frag = new FragTrap("Fraggy");
+		frag->printStatus();
 		frag->attack("some other trap");
 		frag->beRepaired(20);
 		frag->takeDamage(5);

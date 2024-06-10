@@ -39,6 +39,7 @@ int	main() {
 		std::cout << "---SECTION 2---" << std::endl;
 
 		ScavTrap* scav = new ScavTrap("Scavvy");
+		scav->printStatus();
 		scav->attack("some other trap");
 		scav->beRepaired(20);
 		scav->takeDamage(5);

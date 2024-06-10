@@ -1,7 +1,7 @@
 #pragma once
 
 #include <string>
-#define CLAP_DEFAULT_NAME	"Unknown"
+#define CLAP_DEFAULT_NAME	"ClapTrap Unknown"
 #define CLAP_DEFAULT_HP		10
 #define CLAP_DEFAULT_MANA	10
 #define CLAP_DEFAULT_DAMAGE	0
@@ -47,7 +47,6 @@ class ClapTrap {
 	int			_hp;
 	int			_mana;
 	int			_damage;
-	void		_initialize(const std::string& name);
 	void		_printHpAndMana() const;
 	void		_printAction(ActionType aType, unsigned int amount, const std::string* target = NULL) const;
 	void		_printFailure(ActionType aType, const std::string* target = NULL) const;

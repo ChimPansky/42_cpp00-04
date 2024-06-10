@@ -8,24 +8,28 @@ std::ostream& operator<<(std::ostream& outStream, const FragTrap& fragTrapObject
 	return (outStream);
 }
 
-FragTrap::FragTrap() {
+FragTrap::FragTrap()
+	: ClapTrap() {
 		std::cout << _className << ": Default constructor called" << std::endl;
-		_initialize(FRAG_DEFAULT_NAME);
+	_name = FRAG_DEFAULT_NAME;
 }
 
-FragTrap::FragTrap(const std::string& name) {
+FragTrap::FragTrap(const std::string& name)
+	: ClapTrap(name) {
 		std::cout << _className << ": String constructor called" << std::endl;
-		_initialize(name);
+	_name = name;
 }
 
 FragTrap::FragTrap(const FragTrap& other)
 	: ClapTrap(other) {
 	std::cout << _className << ": Copy constructor called" << std::endl;
+	*this = other;
 }
 
 FragTrap& FragTrap::operator=(const FragTrap& other) {
 	std::cout << _className << ": Copy assignment operator called" << std::endl;
 	if (this != &other) {
+		_name = other._name;
 		_hp = other._hp;
 		_mana = other._mana;
 		_damage = other._damage;
@@ -49,12 +53,4 @@ std::string FragTrap::getName() const {
 void	FragTrap::highFivesGuys(void) {
 	std::cout << "<" << _className << " method highFivesGuys()>: ";
 	std::cout << *this << " wants to High Five you. Can we get a whoop whoop? (Positivity level is over 9000!!)" << std::endl;
-}
-
-// private methods:
-void	FragTrap::_initialize(const std::string& name) {
-	_name = name;
-	_hp = FRAG_DEFAULT_HP;
-	_mana = FRAG_DEFAULT_MANA;
-	_damage = FRAG_DEFAULT_DAMAGE;
 }

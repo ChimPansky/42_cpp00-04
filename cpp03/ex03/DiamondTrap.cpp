@@ -11,25 +11,28 @@ std::ostream& operator<<(std::ostream& outStream, const DiamondTrap& diamondTrap
 	return (outStream);
 }
 
-DiamondTrap::DiamondTrap() {
+DiamondTrap::DiamondTrap()
+	: FragTrap(), ScavTrap() {
 		std::cout << _className << ": Default constructor called" << std::endl;
-		_initialize(DIAMOND_DEFAULT_NAME);
+		_name = DIAMOND_DEFAULT_NAME;
 }
 
-DiamondTrap::DiamondTrap(const std::string& name) {
+DiamondTrap::DiamondTrap(const std::string& name)
+	: ClapTrap(name + "_clap_name"), FragTrap(name), ScavTrap(name) {
 		std::cout << _className << ": String constructor called" << std::endl;
-		ClapTrap::_name = name + "_clap_name";
-		_initialize(name);
+		_name = name;
 }
 
 DiamondTrap::DiamondTrap(const DiamondTrap& other)
-	: FragTrap(other), ScavTrap(other) {
+	: ClapTrap(other), FragTrap(other), ScavTrap(other) {
 	std::cout << _className << ": Copy constructor called" << std::endl;
+	*this = other;
 }
 
 DiamondTrap& DiamondTrap::operator=(const DiamondTrap& other) {
 	std::cout << _className << ": Copy assignment operator called" << std::endl;
 	if (this != &other) {
+		ClapTrap::_name = other.ClapTrap::_name;
 		_name = other._name;
 		_hp = other._hp;
 		_mana = other._mana;
@@ -42,15 +45,7 @@ DiamondTrap::~DiamondTrap() {
 	std::cout << _className << ": Destructor called" << std::endl;
 }
 
-// private methods:
-void	DiamondTrap::_initialize(const std::string& name) {
-	_name = name;
-	_hp = FRAG_DEFAULT_HP;
-	_mana = SCAV_DEFAULT_MANA;
-	_damage = FRAG_DEFAULT_DAMAGE;
-}
-
-// public Getters:
+// public methods:
 std::string	DiamondTrap::getClassName() const {
 	return (_className);
 }
@@ -59,7 +54,6 @@ std::string DiamondTrap::getName() const {
 	return (DiamondTrap::_name);
 }
 
-// public methods:
 void	DiamondTrap::whoAmI() {
 	std::cout << "<" << _className << " method whoAmI()>: ";
 	std::cout << _className << " name: " << _name << "; "

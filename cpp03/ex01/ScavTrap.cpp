@@ -9,19 +9,22 @@ std::ostream& operator<<(std::ostream& outStream, const ScavTrap& scavTrapObject
 	return (outStream);
 }
 
-ScavTrap::ScavTrap() {
+ScavTrap::ScavTrap()
+	: ClapTrap() {
 		std::cout << _className << ": Default constructor called" << std::endl;
-		_initialize(SCAV_DEFAULT_NAME);
+		_name = SCAV_DEFAULT_NAME;
 }
 
-ScavTrap::ScavTrap(const std::string& name) {
+ScavTrap::ScavTrap(const std::string& name)
+	: ClapTrap(name) {
 		std::cout << _className << ": String constructor called" << std::endl;
-		_initialize(name);
+	_name = name;
 }
 
 ScavTrap::ScavTrap(const ScavTrap& other)
 	: ClapTrap(other) {
 	std::cout << _className << ": Copy constructor called" << std::endl;
+	*this = other;
 }
 
 ScavTrap& ScavTrap::operator=(const ScavTrap& other) {
@@ -61,12 +64,4 @@ void	ScavTrap::attack(const std::string& target) {
 void	ScavTrap::guardGate() {
 	std::cout << "<" << _className << " method guardGate()>: ";
 	std::cout << *this << " is now in gate keeper mode." << std::endl;
-}
-
-// private methods:
-void	ScavTrap::_initialize(const std::string& name) {
-	_name = name;
-	_hp = SCAV_DEFAULT_HP;
-	_mana = SCAV_DEFAULT_MANA;
-	_damage = SCAV_DEFAULT_DAMAGE;
 }

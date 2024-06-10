@@ -9,25 +9,26 @@ std::ostream& operator<<(std::ostream& outStream, const ClapTrap& clapTrapObject
 	return (outStream);
 }
 
-ClapTrap::ClapTrap() {
-		std::cout << _className << ": Default constructor called" << std::endl;
-		_initialize(CLAP_DEFAULT_NAME);
+ClapTrap::ClapTrap()
+	: _name(CLAP_DEFAULT_NAME), _hp(CLAP_DEFAULT_HP),
+		_mana(CLAP_DEFAULT_MANA), _damage(CLAP_DEFAULT_DAMAGE) {
+	std::cout << _className << ": Default constructor called" << std::endl;
 }
 
-ClapTrap::ClapTrap(const std::string& name) {
-		std::cout << _className << ": String constructor called" << std::endl;
-		_initialize(name);
+ClapTrap::ClapTrap(const std::string& name)
+	: _name(name), _hp(CLAP_DEFAULT_HP), _mana(CLAP_DEFAULT_MANA), _damage(CLAP_DEFAULT_DAMAGE) {
+	std::cout << _className << ": String constructor called" << std::endl;
 }
 
-ClapTrap::ClapTrap(const ClapTrap& other)
-	: _name(other._name), _hp(other._hp), _mana(other._mana), _damage(other._damage){
+ClapTrap::ClapTrap(const ClapTrap& other) {
 	std::cout << _className << ": Copy constructor called" << std::endl;
+	*this = other;
 }
-
 
 ClapTrap& ClapTrap::operator=(const ClapTrap& other) {
 	std::cout << _className << ": Copy assignment operator called" << std::endl;
 	if (this != &other) {
+		_name = other._name;
 		_hp = other._hp;
 		_mana = other._mana;
 		_damage = other._damage;
@@ -86,13 +87,6 @@ void	ClapTrap::printStatus() const {
 }
 
 // private methods:
-void	ClapTrap::_initialize(const std::string& name) {
-	_name = name;
-	_hp = CLAP_DEFAULT_HP;
-	_mana = CLAP_DEFAULT_MANA;
-	_damage = CLAP_DEFAULT_DAMAGE;
-}
-
 void	ClapTrap::_printHpAndMana() const {
 	std::cout << RED_COLOR << _hp << " HP" << RESET_COLOR << " and "
 		<< BLUE_COLOR << _mana << " Mana " << RESET_COLOR << "left.";

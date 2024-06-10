@@ -3,7 +3,7 @@
 #include "ClapTrap.hpp"
 #include <string>
 
-#define FRAG_DEFAULT_NAME	"Unknown"
+#define FRAG_DEFAULT_NAME	"FragTrap Unknown"
 #define FRAG_DEFAULT_HP		100
 #define FRAG_DEFAULT_MANA	100
 #define FRAG_DEFAULT_DAMAGE	30
@@ -24,7 +24,6 @@ class FragTrap : public ClapTrap{
 
   private:
 	static const std::string	_className;
-	void	_initialize(const std::string& name);
 };
 
 std::ostream& operator<<(std::ostream& outStream, const FragTrap& fragTrapObject);

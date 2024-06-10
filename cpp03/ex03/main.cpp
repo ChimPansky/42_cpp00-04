@@ -4,8 +4,14 @@ int	main() {
 	{
 		std::cout << "---SECTION 1---" << std::endl;
 		DiamondTrap*	a = new DiamondTrap("Bob");
+		std::cout << std::endl;
+
 		DiamondTrap*	b = new DiamondTrap(*a);
+		std::cout << std::endl;
+
 		DiamondTrap*	c = new DiamondTrap();
+		std::cout << std::endl;
+
 		*c = *b;
 		std::cout << std::endl;
 
@@ -22,40 +28,37 @@ int	main() {
 		delete b;
 		delete c;
 	}
-	return 0;
 	{
 		std::cout << std::endl;
 		std::cout << "---SECTION 2---" << std::endl;
 
-		FragTrap* frag = new FragTrap("Fraggy");
-		frag->attack("some other trap");
-		frag->beRepaired(20);
-		frag->takeDamage(5);
-		frag->highFivesGuys();
-
-		frag->attack("Fragdude");
-		frag->attack("Joey");
-		frag->attack("Joey");
-		frag->attack("Joey");
-		frag->attack("Joey");
-		frag->attack("Joey");
-		frag->attack("Joey");
-		frag->attack("Joey");
-		frag->attack("Joey");
-		frag->attack("Joey");
-		frag->attack("Joey");
-		frag->attack("Joey");
-		frag->takeDamage(20);
-		frag->takeDamage(6);
-		frag->beRepaired(5);
-		frag->beRepaired(6);
-		frag->takeDamage(5);
-		frag->takeDamage(5);
-		frag->takeDamage(5);
-		frag->beRepaired(5);
-		frag->attack("Bob");
-
-		delete frag;
+		DiamondTrap* diamond = new DiamondTrap("Shiny");
+		diamond->attack("some other diamond");
+		diamond->beRepaired(20);
+		diamond->takeDamage(5);
+		diamond->highFivesGuys();
+		diamond->attack("Billy");
+		diamond->attack("Joey");
+		diamond->attack("Joey");
+		diamond->attack("Joey");
+		diamond->attack("Joey");
+		diamond->attack("Joey");
+		diamond->attack("Joey");
+		diamond->attack("Joey");
+		diamond->attack("Joey");
+		diamond->attack("Joey");
+		diamond->attack("Joey");
+		diamond->attack("Joey");
+		diamond->takeDamage(20);
+		diamond->takeDamage(6);
+		diamond->beRepaired(5);
+		diamond->beRepaired(6);
+		diamond->takeDamage(5);
+		diamond->takeDamage(5);
+		diamond->takeDamage(5);
+		diamond->beRepaired(5);
+		diamond->attack("Bob");
+		delete diamond;
 		return (0);
 	}
 }
