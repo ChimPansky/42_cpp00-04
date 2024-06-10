@@ -27,6 +27,7 @@ ScavTrap::ScavTrap(const ScavTrap& other)
 ScavTrap& ScavTrap::operator=(const ScavTrap& other) {
 	std::cout << _className << ": Copy assignment operator called" << std::endl;
 	if (this != &other) {
+		_name = other._name;
 		_hp = other._hp;
 		_mana = other._mana;
 		_damage = other._damage;

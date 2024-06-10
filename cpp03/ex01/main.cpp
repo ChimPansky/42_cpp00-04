@@ -2,62 +2,71 @@
 #include <iostream>
 
 int	main() {
-	ScavTrap	a;
-	ScavTrap	b("Scavvy");
-	ScavTrap	c(b);
-	c = b;
+	{
+		std::cout << "---SECTION 1---" << std::endl;
+		ClapTrap*	a = new ClapTrap("Clappy");
+		ClapTrap*	b = new ScavTrap("Scavvy");
+		ScavTrap*	c = new ScavTrap("Scabby");
+		ScavTrap*	d = new ScavTrap(*c);
+		ScavTrap*	e = new ScavTrap;
+		*e = *d;
+		std::cout << std::endl;
 
-	a.attack("Scavdude");
-	b.attack("Joey");
-	b.attack("Joey");
-	b.attack("Joey");
-	b.attack("Joey");
-	b.attack("Joey");
-	b.attack("Joey");
-	b.attack("Joey");
-	b.attack("Joey");
-	b.attack("Joey");
-	b.attack("Joey");
-	b.attack("Joey");
+		a->printStatus();
+		b->printStatus();
+		c->printStatus();
+		d->printStatus();
+		e->printStatus();
 
+		std::cout << std::endl;
+		c->attack("random victim");
 
-	b.takeDamage(20);
-	a.takeDamage(6);
+		a->printStatus();
+		b->printStatus();
+		c->printStatus();
+		d->printStatus();
+		e->printStatus();
+		std::cout << std::endl;
 
-	b.beRepaired(5);
-	a.beRepaired(6);
-	b.takeDamage(5);
-	b.takeDamage(5);
-	b.takeDamage(5);
-	b.beRepaired(5);
-	b.attack("Bob");
-	b.guardGate();
-	// b.takeDamage(5);
+		delete a;
+		delete b;
+		delete c;
+		delete d;
+		delete e;
+	}
+	{
+		std::cout << std::endl;
+		std::cout << "---SECTION 2---" << std::endl;
 
-	return (0);
+		ScavTrap* scav = new ScavTrap("Scavvy");
+		scav->attack("some other trap");
+		scav->beRepaired(20);
+		scav->takeDamage(5);
+		scav->guardGate();
 
-	// Fixed	fix1;
-	// Fixed	fix2(fix1);
-	// Fixed	fix3;
+		scav->attack("Scavdude");
+		scav->attack("Joey");
+		scav->attack("Joey");
+		scav->attack("Joey");
+		scav->attack("Joey");
+		scav->attack("Joey");
+		scav->attack("Joey");
+		scav->attack("Joey");
+		scav->attack("Joey");
+		scav->attack("Joey");
+		scav->attack("Joey");
+		scav->attack("Joey");
+		scav->takeDamage(20);
+		scav->takeDamage(6);
+		scav->beRepaired(5);
+		scav->beRepaired(6);
+		scav->takeDamage(5);
+		scav->takeDamage(5);
+		scav->takeDamage(5);
+		scav->beRepaired(5);
+		scav->attack("Bob");
 
-	// std::cout << "fix1 val:" << fix1.getRawBits() << std::endl;
-	// std::cout << "fix2 val:" << fix2.getRawBits() << std::endl;
-
-	// fix1.setRawBits(5);
-	// std::cout << "changing fix1 val to 5..." << std::endl;
-
-	// std::cout << "fix1 val:" << fix1.getRawBits() << std::endl;
-	// std::cout << "fix2 val:" << fix2.getRawBits() << std::endl;
-
-
-	// std::cout << "fix3 val:" << fix3.getRawBits() << std::endl;
-	// fix3.setRawBits(42);
-	// std::cout << "changing fix3 val to 42..." << std::endl;
-	// std::cout << "fix3 val:" << fix3.getRawBits() << std::endl;
-
-	// std::cout << "fix3 = fix1..." << std::endl;
-	// fix3 = fix1;
-	// std::cout << "fix3 val:" << fix3.getRawBits() << std::endl;
-
-	// return (0);
+		delete scav;
+		return (0);
+	}
 }

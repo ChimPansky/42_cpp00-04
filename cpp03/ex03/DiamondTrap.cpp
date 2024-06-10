@@ -16,20 +16,21 @@ DiamondTrap::DiamondTrap() {
 		_initialize(DIAMOND_DEFAULT_NAME);
 }
 
-DiamondTrap::DiamondTrap(const std::string& name)
-	: ClapTrap(name + "_clap_name") {
+DiamondTrap::DiamondTrap(const std::string& name) {
 		std::cout << _className << ": String constructor called" << std::endl;
+		ClapTrap::_name = name + "_clap_name";
 		_initialize(name);
 }
 
 DiamondTrap::DiamondTrap(const DiamondTrap& other)
-	: ClapTrap(other), FragTrap(other), ScavTrap(other) {
+	: FragTrap(other), ScavTrap(other) {
 	std::cout << _className << ": Copy constructor called" << std::endl;
 }
 
 DiamondTrap& DiamondTrap::operator=(const DiamondTrap& other) {
 	std::cout << _className << ": Copy assignment operator called" << std::endl;
 	if (this != &other) {
+		_name = other._name;
 		_hp = other._hp;
 		_mana = other._mana;
 		_damage = other._damage;

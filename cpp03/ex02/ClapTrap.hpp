@@ -21,7 +21,7 @@ class ClapTrap {
 	ClapTrap(const std::string& name);
 	ClapTrap(const ClapTrap& other);
 	ClapTrap& operator=(const ClapTrap& other);
-	~ClapTrap();
+	virtual ~ClapTrap();
 
 	enum ActionType {
 		Attack = 1,
@@ -37,6 +37,8 @@ class ClapTrap {
 	void		takeDamage(unsigned int amount);
 	void		beRepaired(unsigned int amount);
 
+	void		printStatus() const;
+
   private:
 	static const std::string	_className;
 
@@ -46,11 +48,10 @@ class ClapTrap {
 	int			_mana;
 	int			_damage;
 	void		_initialize(const std::string& name);
-	void		_printHpAndMana();
-	void		_printAction(ActionType aType, unsigned int amount, const std::string* target = NULL);
-	void		_printFailure(ActionType aType, const std::string* target = NULL);
-	bool		_hasEnoughHpAndMana();
-
+	void		_printHpAndMana() const;
+	void		_printAction(ActionType aType, unsigned int amount, const std::string* target = NULL) const;
+	void		_printFailure(ActionType aType, const std::string* target = NULL) const;
+	bool		_hasEnoughHpAndMana() const;
 };
 
 std::ostream& operator<<(std::ostream& outStream, const ClapTrap& clapTrapObject);

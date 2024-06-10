@@ -1,61 +1,61 @@
 #include "DiamondTrap.hpp"
-
+#include <iostream>
 int	main() {
-	DiamondTrap	a;
-	a.whoAmI();
-	DiamondTrap	b("Fancy Stone");
-	b.whoAmI();
-	DiamondTrap	c;
-	c.whoAmI();
+	{
+		std::cout << "---SECTION 1---" << std::endl;
+		DiamondTrap*	a = new DiamondTrap("Bob");
+		DiamondTrap*	b = new DiamondTrap(*a);
+		DiamondTrap*	c = new DiamondTrap();
+		*c = *b;
+		std::cout << std::endl;
 
-	a.attack("Just another stone");
-	a.attack("Just another stone");
-	a.attack("Just another stone");
-	a.attack("Just another stone");
-	a.attack("Just another stone");
-	b.attack("Just another stone");
-	b.attack("Just another stone");
-	b.attack("Just another stone");
-	b.attack("Just another stone");
-	b.attack("Just another stone");
+		a->whoAmI();
+		a->printStatus();
+		b->whoAmI();
+		b->printStatus();
+		c->whoAmI();
+		c->printStatus();
 
-	b.takeDamage(20);
-	a.takeDamage(6);
+		std::cout << std::endl;
 
-	b.beRepaired(5);
-	a.beRepaired(6);
-	b.takeDamage(5);
-	b.takeDamage(5);
-	b.takeDamage(5);
-	b.beRepaired(5);
-	b.attack("Bob");
-	b.highFivesGuys();
-	// b.takeDamage(5);
+		delete a;
+		delete b;
+		delete c;
+	}
+	return 0;
+	{
+		std::cout << std::endl;
+		std::cout << "---SECTION 2---" << std::endl;
 
-	return (0);
+		FragTrap* frag = new FragTrap("Fraggy");
+		frag->attack("some other trap");
+		frag->beRepaired(20);
+		frag->takeDamage(5);
+		frag->highFivesGuys();
 
-	// Fixed	fix1;
-	// Fixed	fix2(fix1);
-	// Fixed	fix3;
+		frag->attack("Fragdude");
+		frag->attack("Joey");
+		frag->attack("Joey");
+		frag->attack("Joey");
+		frag->attack("Joey");
+		frag->attack("Joey");
+		frag->attack("Joey");
+		frag->attack("Joey");
+		frag->attack("Joey");
+		frag->attack("Joey");
+		frag->attack("Joey");
+		frag->attack("Joey");
+		frag->takeDamage(20);
+		frag->takeDamage(6);
+		frag->beRepaired(5);
+		frag->beRepaired(6);
+		frag->takeDamage(5);
+		frag->takeDamage(5);
+		frag->takeDamage(5);
+		frag->beRepaired(5);
+		frag->attack("Bob");
 
-	// std::cout << "fix1 val:" << fix1.getRawBits() << std::endl;
-	// std::cout << "fix2 val:" << fix2.getRawBits() << std::endl;
-
-	// fix1.setRawBits(5);
-	// std::cout << "changing fix1 val to 5..." << std::endl;
-
-	// std::cout << "fix1 val:" << fix1.getRawBits() << std::endl;
-	// std::cout << "fix2 val:" << fix2.getRawBits() << std::endl;
-
-
-	// std::cout << "fix3 val:" << fix3.getRawBits() << std::endl;
-	// fix3.setRawBits(42);
-	// std::cout << "changing fix3 val to 42..." << std::endl;
-	// std::cout << "fix3 val:" << fix3.getRawBits() << std::endl;
-
-	// std::cout << "fix3 = fix1..." << std::endl;
-	// fix3 = fix1;
-	// std::cout << "fix3 val:" << fix3.getRawBits() << std::endl;
-
-	// return (0);
+		delete frag;
+		return (0);
+	}
 }

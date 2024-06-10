@@ -12,6 +12,7 @@ BUILD_DIR = build
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 CFLAGS += -MMD -g
+CFLAGS += -Wshadow
 
 FILENAMES = main.cpp \
 			ClapTrap.cpp \

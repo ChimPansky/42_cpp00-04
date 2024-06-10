@@ -1,62 +1,73 @@
 #include "FragTrap.hpp"
+#include <iostream>
 
 int	main() {
-	FragTrap	a;
-	FragTrap	b("Fraggy");
-	FragTrap	c(b);
-	c = b;
+	{
+		std::cout << "---SECTION 1---" << std::endl;
+		ClapTrap*	a = new ClapTrap("Clappy");
+		ClapTrap*	b = new FragTrap("Fraggy1");
+		FragTrap*	c = new FragTrap("Fraggy2");
+		FragTrap*	d = new FragTrap(*c);
+		FragTrap*	e = new FragTrap;
+		*e = *d;
+		std::cout << std::endl;
 
-	a.attack("Fragdude");
-	b.attack("Joey");
-	b.attack("Joey");
-	b.attack("Joey");
-	b.attack("Joey");
-	b.attack("Joey");
-	b.attack("Joey");
-	b.attack("Joey");
-	b.attack("Joey");
-	b.attack("Joey");
-	b.attack("Joey");
-	b.attack("Joey");
+		a->printStatus();
+		b->printStatus();
+		c->printStatus();
+		d->printStatus();
+		e->printStatus();
 
+		std::cout << std::endl;
+		c->attack("random victim");
 
-	b.takeDamage(20);
-	a.takeDamage(6);
+		a->printStatus();
+		b->printStatus();
+		c->printStatus();
+		d->printStatus();
+		e->printStatus();
+		std::cout << std::endl;
 
-	b.beRepaired(5);
-	a.beRepaired(6);
-	b.takeDamage(5);
-	b.takeDamage(5);
-	b.takeDamage(5);
-	b.beRepaired(5);
-	b.attack("Bob");
-	b.highFivesGuys();
-	// b.takeDamage(5);
+		delete a;
+		delete b;
+		delete c;
+		delete d;
+		delete e;
+	}
 
-	return (0);
+	{
+		std::cout << std::endl;
+		std::cout << "---SECTION 2---" << std::endl;
 
-	// Fixed	fix1;
-	// Fixed	fix2(fix1);
-	// Fixed	fix3;
+		FragTrap* frag = new FragTrap("Fraggy");
+		frag->attack("some other trap");
+		frag->beRepaired(20);
+		frag->takeDamage(5);
+		frag->highFivesGuys();
 
-	// std::cout << "fix1 val:" << fix1.getRawBits() << std::endl;
-	// std::cout << "fix2 val:" << fix2.getRawBits() << std::endl;
+		frag->attack("Fragdude");
+		frag->attack("Joey");
+		frag->attack("Joey");
+		frag->attack("Joey");
+		frag->attack("Joey");
+		frag->attack("Joey");
+		frag->attack("Joey");
+		frag->attack("Joey");
+		frag->attack("Joey");
+		frag->attack("Joey");
+		frag->attack("Joey");
+		frag->attack("Joey");
+		frag->takeDamage(20);
+		frag->takeDamage(6);
+		frag->beRepaired(5);
+		frag->beRepaired(6);
+		frag->takeDamage(5);
+		frag->takeDamage(5);
+		frag->takeDamage(5);
+		frag->beRepaired(5);
+		frag->attack("Bob");
 
-	// fix1.setRawBits(5);
-	// std::cout << "changing fix1 val to 5..." << std::endl;
-
-	// std::cout << "fix1 val:" << fix1.getRawBits() << std::endl;
-	// std::cout << "fix2 val:" << fix2.getRawBits() << std::endl;
-
-
-	// std::cout << "fix3 val:" << fix3.getRawBits() << std::endl;
-	// fix3.setRawBits(42);
-	// std::cout << "changing fix3 val to 42..." << std::endl;
-	// std::cout << "fix3 val:" << fix3.getRawBits() << std::endl;
-
-	// std::cout << "fix3 = fix1..." << std::endl;
-	// fix3 = fix1;
-	// std::cout << "fix3 val:" << fix3.getRawBits() << std::endl;
-
-	// return (0);
+		delete frag;
+		return (0);
+	}
 }

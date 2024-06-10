@@ -20,7 +20,7 @@ ClapTrap::ClapTrap(const std::string& name) {
 }
 
 ClapTrap::ClapTrap(const ClapTrap& other)
-	: _hp(other._hp), _mana(other._mana), _damage(other._damage){
+	: _name(other._name), _hp(other._hp), _mana(other._mana), _damage(other._damage) {
 	std::cout << _className << ": Copy constructor called" << std::endl;
 }
 
@@ -28,6 +28,7 @@ ClapTrap::ClapTrap(const ClapTrap& other)
 ClapTrap& ClapTrap::operator=(const ClapTrap& other) {
 	std::cout << _className << ": Copy assignment operator called" << std::endl;
 	if (this != &other) {
+		_name = other._name;
 		_hp = other._hp;
 		_mana = other._mana;
 		_damage = other._damage;
@@ -79,6 +80,12 @@ void	ClapTrap::beRepaired(unsigned int amount) {
 	_printAction(Heal, amount);
 }
 
+void	ClapTrap::printStatus() const {
+	std::cout << _className << " " << *this << ": ";
+	_printHpAndMana();
+	std::cout << std::endl;
+}
+
 // private methods:
 void	ClapTrap::_initialize(const std::string& name) {
 	_name = name;
@@ -87,12 +94,12 @@ void	ClapTrap::_initialize(const std::string& name) {
 	_damage = CLAP_DEFAULT_DAMAGE;
 }
 
-void	ClapTrap::_printHpAndMana() {
+void	ClapTrap::_printHpAndMana() const {
 	std::cout << RED_COLOR << _hp << " HP" << RESET_COLOR << " and "
 		<< BLUE_COLOR << _mana << " Mana " << RESET_COLOR << "left.";
 }
 
-void	ClapTrap::_printAction(ActionType aType, unsigned int amount, const std::string* target) {
+void	ClapTrap::_printAction(ActionType aType, unsigned int amount, const std::string* target) const {
 	std::cout << *this << " ";
 	switch (aType) {
 		case Attack:
@@ -112,7 +119,7 @@ void	ClapTrap::_printAction(ActionType aType, unsigned int amount, const std::st
 	std::cout  << std::endl;
 }
 
-void	ClapTrap::_printFailure(ActionType aType, const std::string* target) {
+void	ClapTrap::_printFailure(ActionType aType, const std::string* target) const {
 	std::cout << *this << " ";
 	switch (aType) {
 		case Attack:
@@ -132,6 +139,6 @@ void	ClapTrap::_printFailure(ActionType aType, const std::string* target) {
 	std::cout << std::endl;
 }
 
-bool	ClapTrap::_hasEnoughHpAndMana() {
+bool	ClapTrap::_hasEnoughHpAndMana() const {
 	return (_hp > 0 && _mana > 0);
 }

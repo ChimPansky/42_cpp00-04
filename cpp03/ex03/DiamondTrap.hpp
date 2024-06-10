@@ -3,10 +3,10 @@
 #include "ScavTrap.hpp"
 #include "FragTrap.hpp"
 #include <string>
-#define DIAMOND_DEFAULT_NAME	"DUnknown"
+#define DIAMOND_DEFAULT_NAME	"DiamondTrap Unknown"
 
 // virtual??
-class DiamondTrap : virtual public FragTrap, virtual public ScavTrap{
+class DiamondTrap : public FragTrap, public ScavTrap{
   private:
 	std::string					_name;
 	static const std::string	_className;
