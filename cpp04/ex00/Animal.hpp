@@ -6,7 +6,6 @@
 class Animal {
   public:
 	Animal();
-	Animal(const std::string& type);
 	Animal(const Animal& other);
 	Animal& operator=(const Animal& other);
 	virtual ~Animal();
@@ -21,8 +20,8 @@ class Animal {
 	std::string	_type;
 	void	_initialize(const std::string& type);
 
-
   private:
+  // statics:
 	static const std::string	_className;
 	static const std::string	_sound;
 };

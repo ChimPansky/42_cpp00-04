@@ -24,20 +24,31 @@ int	main() {
 		delete zoo[i];
 	}
 
-	std::cout << "\n\n---Tests for deep copy:\n" << std::endl;
+	std::cout << "\n\n---Cat Tests for deep copy:\n" << std::endl;
 	{
-		Cat	kitty;
-		Cat kitty2(kitty);
+		Cat	kitty1;
+		Cat kitty2(kitty1);
 
-		std::cout << "\nkitty brain: " << kitty.getBrain() << std::endl;
+		std::cout << "\nkitty brain: " << kitty1.getBrain() << std::endl;
 		std::cout << "kitty2 brain: " << kitty2.getBrain() << "\n" << std::endl;
+		kitty1.getBrain()->setIdea(0, "Push porcelain figures from shelves.");
+		kitty2.getBrain()->setIdea(0, "Catch tail.");
+		std::cout << "kitty idea 0: " << kitty1.getBrain()->getIdea(0) << std::endl;
+		std::cout << "kitty2 idea 0: " << kitty2.getBrain()->getIdea(0) << std::endl;
+		std::cout << std::endl;
 	}
 	std::cout << std::endl;
+	std::cout << "\n\n---Dog Tests for deep copy:\n" << std::endl;
 	{
-		Dog	doggo;
-		Dog doggo2(doggo);
+		Dog	doggo1;
+		Dog doggo2(doggo1);
 
-		std::cout << "\ndoggo brain: " << doggo.getBrain() << std::endl;
+		std::cout << "\ndoggo brain: " << doggo1.getBrain() << std::endl;
 		std::cout << "doggo2 brain: " << doggo2.getBrain() << "\n" << std::endl;
+		doggo1.getBrain()->setIdea(0, "Do some sniffin.");
+		doggo2.getBrain()->setIdea(0, "Look for something to eat. Literally anything.");
+		std::cout << "doggo idea 0: " << doggo1.getBrain()->getIdea(0) << std::endl;
+		std::cout << "doggo idea 0: " << doggo2.getBrain()->getIdea(0) << std::endl;
+		std::cout << std::endl;
 	}
 }

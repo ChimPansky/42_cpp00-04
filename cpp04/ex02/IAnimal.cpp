@@ -15,7 +15,7 @@ IAnimal::IAnimal(const std::string& type) {
 
 IAnimal::IAnimal(const IAnimal& other) {
 	std::cout << _className << ": Copy Constructor called" << std::endl;
-	_type = other._type;
+	*this = other;
 }
 
 std::string IAnimal::getType() const {

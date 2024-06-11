@@ -9,14 +9,9 @@ WrongAnimal::WrongAnimal() {
 	_initialize(WRONG_ANIMAL_DEFAULT_TYPE);
 }
 
-WrongAnimal::WrongAnimal(const std::string& type) {
-	std::cout << _className << ": String Constructor called" << std::endl;
-	_initialize(type);
-}
-
 WrongAnimal::WrongAnimal(const WrongAnimal& other) {
 	std::cout << _className << ": Copy Constructor called" << std::endl;
-	_type = other._type;
+	*this = other;
 }
 
 std::string WrongAnimal::getType() const {

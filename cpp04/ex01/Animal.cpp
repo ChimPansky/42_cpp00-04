@@ -9,14 +9,9 @@ Animal::Animal() {
 	_initialize(ANIMAL_DEFAULT_TYPE);
 }
 
-Animal::Animal(const std::string& type) {
-	std::cout << _className << ": String Constructor called" << std::endl;
-	_initialize(type);
-}
-
 Animal::Animal(const Animal& other) {
 	std::cout << _className << ": Copy Constructor called" << std::endl;
-	_type = other._type;
+	*this = other;
 }
 
 std::string Animal::getType() const {

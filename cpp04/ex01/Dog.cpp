@@ -9,11 +9,6 @@ Dog::Dog() {
 	_initialize(DOG_DEFAULT_TYPE);
 }
 
-Dog::Dog(const std::string& type) {
-	std::cout << _className << ": String Constructor called" << std::endl;
-	_initialize(type);
-}
-
 Dog::Dog(const Dog& other)
 	: Animal(other) {
 	std::cout << _className << ": Copy Constructor called" << std::endl;

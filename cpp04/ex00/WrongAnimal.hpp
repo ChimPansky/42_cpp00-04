@@ -6,7 +6,6 @@
 class WrongAnimal {
   public:
 	WrongAnimal();
-	WrongAnimal(const std::string& type);
 	WrongAnimal(const WrongAnimal& other);
 	WrongAnimal& operator=(const WrongAnimal& other);
 	virtual ~WrongAnimal();
@@ -18,7 +17,7 @@ class WrongAnimal {
 	void	makeSound() const;
 
   protected:
-	std::string	_type;
+  	std::string	_type;
 	void	_initialize(const std::string& type);
 
   private:

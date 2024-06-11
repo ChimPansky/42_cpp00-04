@@ -9,15 +9,10 @@ WrongCat::WrongCat() {
 	_initialize(WRONG_CAT_DEFAULT_TYPE);
 }
 
-WrongCat::WrongCat(const std::string& type) {
-	std::cout << _className << ": String Constructor called" << std::endl;
-	_initialize(type);
-}
-
 WrongCat::WrongCat(const WrongCat& other)
 	: WrongAnimal(other) {
 	std::cout << _className << ": Copy Constructor called" << std::endl;
-	_type = other._type;
+	*this = other;
 }
 
 WrongCat&	WrongCat::operator=(const WrongCat& other) {

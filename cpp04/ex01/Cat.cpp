@@ -9,11 +9,6 @@ Cat::Cat() {
 	_initialize(CAT_DEFAULT_TYPE);
 }
 
-Cat::Cat(const std::string& type) {
-	std::cout << _className << ": String Constructor called" << std::endl;
-	_initialize(type);
-}
-
 Cat::Cat(const Cat& other)
 	: Animal(other) {
 	std::cout << _className << ": Copy Constructor called" << std::endl;
