@@ -20,8 +20,7 @@ FILENAMES = main.cpp \
 			Cat.cpp \
 			WrongAnimal.cpp \
 			WrongCat.cpp \
-			Brain.cpp \
-			IAnimal.cpp
+			Brain.cpp
 
 SRC = $(addprefix $(SOURCE_DIR)/, $(FILENAMES))
 OBJ = $(SRC:%.cpp=$(BUILD_DIR)/%.o)
