@@ -2,7 +2,10 @@
 #include <iostream>
 #include <string>
 
-const std::string ScavTrap::_className = "Scavtrap";
+const std::string	ScavTrap::_className = "Scavtrap";
+const int			ScavTrap::_defaultHp = 100;
+const int			ScavTrap::_defaultMana = 50;
+const int			ScavTrap::_defaultDamage = 20;
 
 std::ostream& operator<<(std::ostream& outStream, const ScavTrap& scavTrapObject) {
 	outStream << YELLOW_COLOR << scavTrapObject.getName() << RESET_COLOR;
@@ -12,13 +15,13 @@ std::ostream& operator<<(std::ostream& outStream, const ScavTrap& scavTrapObject
 ScavTrap::ScavTrap()
 	: ClapTrap() {
 		std::cout << _className << ": Default constructor called" << std::endl;
-		_name = SCAV_DEFAULT_NAME;
+	_initialize(_className + "_Default");
 }
 
 ScavTrap::ScavTrap(const std::string& name)
 	: ClapTrap(name) {
 		std::cout << _className << ": String constructor called" << std::endl;
-	_name = name;
+	_initialize(name);
 }
 
 ScavTrap::ScavTrap(const ScavTrap& other)
@@ -64,4 +67,12 @@ void	ScavTrap::attack(const std::string& target) {
 void	ScavTrap::guardGate() {
 	std::cout << "<" << _className << " method guardGate()>: ";
 	std::cout << *this << " is now in gate keeper mode." << std::endl;
+}
+
+// private methods:
+void	ScavTrap::_initialize(const std::string& name) {
+	_name = name;
+	_hp = _defaultHp;
+	_mana = _defaultMana;
+	_damage = _defaultDamage;
 }

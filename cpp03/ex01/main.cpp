@@ -5,9 +5,13 @@ int	main() {
 	{
 		std::cout << "---SECTION 1---" << std::endl;
 		ClapTrap*	a = new ClapTrap("Clappy");
+		std::cout << std::endl;
 		ClapTrap*	b = new ScavTrap("Scavvy");
+		std::cout << std::endl;
 		ScavTrap*	c = new ScavTrap("Scabby");
+		std::cout << std::endl;
 		ScavTrap*	d = new ScavTrap(*c);
+		std::cout << std::endl;
 		ScavTrap*	e = new ScavTrap;
 		*e = *d;
 		std::cout << std::endl;

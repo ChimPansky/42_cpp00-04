@@ -3,15 +3,8 @@
 #include "ScavTrap.hpp"
 #include "FragTrap.hpp"
 #include <string>
-#define DIAMOND_DEFAULT_NAME	"DiamondTrap Unknown"
 
 class DiamondTrap : public FragTrap, public ScavTrap{
-  private:
-	std::string					_name;
-	static const std::string	_className;
-
-	void	_initialize(const std::string& name);
-
   public:
 	DiamondTrap();
 	DiamondTrap(const std::string& name);
@@ -23,7 +16,14 @@ class DiamondTrap : public FragTrap, public ScavTrap{
 	std::string	getClassName() const;
 	std::string	getName() const;
 
-	void	whoAmI();
+	void		whoAmI();
+
+  private:
+	std::string					_name;
+	void		_initialize(const std::string& name);
+
+	//statics:
+	static const std::string	_className;
 };
 
 std::ostream& operator<<(std::ostream& outStream, const DiamondTrap& scavTrapObject);

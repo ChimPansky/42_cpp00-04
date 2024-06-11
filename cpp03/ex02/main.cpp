@@ -6,8 +6,10 @@ int	main() {
 		std::cout << "---SECTION 1---" << std::endl;
 		ClapTrap*	a = new ClapTrap("Clappy");
 		std::cout << std::endl;
+
 		ClapTrap*	b = new FragTrap("Fraggy1");
 		std::cout << std::endl;
+
 		FragTrap*	c = new FragTrap("Fraggy2");
 		std::cout << std::endl;
 		FragTrap*	d = new FragTrap(*c);
@@ -38,7 +40,6 @@ int	main() {
 		delete d;
 		delete e;
 	}
-
 	{
 		std::cout << std::endl;
 		std::cout << "---SECTION 2---" << std::endl;

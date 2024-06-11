@@ -1,7 +1,10 @@
 #include "FragTrap.hpp"
 #include <iostream>
 
-const std::string FragTrap::_className = "Fragtrap";
+const std::string	FragTrap::_className = "Fragtrap";
+const int			FragTrap::_defaultHp = 100;
+const int			FragTrap::_defaultMana = 100;
+const int			FragTrap::_defaultDamage = 30;
 
 std::ostream& operator<<(std::ostream& outStream, const FragTrap& fragTrapObject) {
 	outStream << YELLOW_COLOR << fragTrapObject.getName() << RESET_COLOR;
@@ -11,13 +14,13 @@ std::ostream& operator<<(std::ostream& outStream, const FragTrap& fragTrapObject
 FragTrap::FragTrap()
 	: ClapTrap() {
 		std::cout << _className << ": Default constructor called" << std::endl;
-	_name = FRAG_DEFAULT_NAME;
+	_initialize(_className + "_Default");
 }
 
 FragTrap::FragTrap(const std::string& name)
 	: ClapTrap(name) {
 		std::cout << _className << ": String constructor called" << std::endl;
-	_name = name;
+	_initialize(name);
 }
 
 FragTrap::FragTrap(const FragTrap& other)
@@ -53,4 +56,12 @@ std::string FragTrap::getName() const {
 void	FragTrap::highFivesGuys(void) {
 	std::cout << "<" << _className << " method highFivesGuys()>: ";
 	std::cout << *this << " wants to High Five you. Can we get a whoop whoop? (Positivity level is over 9000!!)" << std::endl;
+}
+
+// private methods:
+void	FragTrap::_initialize(const std::string& name) {
+	_name = name;
+	_hp = _defaultHp;
+	_mana = _defaultMana;
+	_damage = _defaultDamage;
 }

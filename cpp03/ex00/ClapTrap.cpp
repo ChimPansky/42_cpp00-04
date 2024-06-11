@@ -2,7 +2,10 @@
 #include <iostream>
 #include <string>
 
-const std::string ClapTrap::_className = "Claptrap";
+const std::string	ClapTrap::_className = "Claptrap";
+const int			ClapTrap::_defaultHp = 10;
+const int			ClapTrap::_defaultMana = 10;
+const int			ClapTrap::_defaultDamage = 0;
 
 std::ostream& operator<<(std::ostream& outStream, const ClapTrap& clapTrapObject) {
 	outStream << YELLOW_COLOR << clapTrapObject.getName() << RESET_COLOR;
@@ -10,13 +13,12 @@ std::ostream& operator<<(std::ostream& outStream, const ClapTrap& clapTrapObject
 }
 
 ClapTrap::ClapTrap()
-	: _name(CLAP_DEFAULT_NAME), _hp(CLAP_DEFAULT_HP),
-		_mana(CLAP_DEFAULT_MANA), _damage(CLAP_DEFAULT_DAMAGE) {
+	: _name(_className + "_Default"), _hp(_defaultHp), _mana(_defaultMana), _damage(_defaultDamage) {
 	std::cout << _className << ": Default constructor called" << std::endl;
 }
 
 ClapTrap::ClapTrap(const std::string& name)
-	: _name(name), _hp(CLAP_DEFAULT_HP), _mana(CLAP_DEFAULT_MANA), _damage(CLAP_DEFAULT_DAMAGE) {
+	: _name(name), _hp(_defaultHp),	_mana(_defaultMana), _damage(_defaultDamage) {
 	std::cout << _className << ": String constructor called" << std::endl;
 	_name = name;
 }
@@ -97,7 +99,8 @@ void	ClapTrap::_printAction(ActionType aType, unsigned int amount, const std::st
 	std::cout << *this << " ";
 	switch (aType) {
 		case Attack:
-			std::cout << CYAN_COLOR << "attacks " << YELLOW_COLOR << *target;
+			std::cout << CYAN_COLOR << "attacks " << YELLOW_COLOR << *target << " with "
+				<< _damage << " damage";
 			break;
 		case Tank:
 			std::cout << MAGENTA_COLOR << "is taking " << amount << " damage";

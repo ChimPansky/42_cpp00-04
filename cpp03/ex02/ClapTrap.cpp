@@ -2,7 +2,10 @@
 #include <iostream>
 #include <string>
 
-const std::string ClapTrap::_className = "Claptrap";
+const std::string	ClapTrap::_className = "Claptrap";
+const int			ClapTrap::_defaultHp = 10;
+const int			ClapTrap::_defaultMana = 10;
+const int			ClapTrap::_defaultDamage = 0;
 
 std::ostream& operator<<(std::ostream& outStream, const ClapTrap& clapTrapObject) {
 	outStream << YELLOW_COLOR << clapTrapObject.getName() << RESET_COLOR;
@@ -10,21 +13,20 @@ std::ostream& operator<<(std::ostream& outStream, const ClapTrap& clapTrapObject
 }
 
 ClapTrap::ClapTrap()
-	: _name(CLAP_DEFAULT_NAME), _hp(CLAP_DEFAULT_HP),
-		_mana(CLAP_DEFAULT_MANA), _damage(CLAP_DEFAULT_DAMAGE) {
+	: _name(_className + "_Default"), _hp(_defaultHp), _mana(_defaultMana), _damage(_defaultDamage) {
 	std::cout << _className << ": Default constructor called" << std::endl;
 }
 
 ClapTrap::ClapTrap(const std::string& name)
-	: _name(name), _hp(CLAP_DEFAULT_HP), _mana(CLAP_DEFAULT_MANA), _damage(CLAP_DEFAULT_DAMAGE) {
+	: _name(name), _hp(_defaultHp),	_mana(_defaultMana), _damage(_defaultDamage) {
 	std::cout << _className << ": String constructor called" << std::endl;
+	_name = name;
 }
 
 ClapTrap::ClapTrap(const ClapTrap& other) {
 	std::cout << _className << ": Copy constructor called" << std::endl;
 	*this = other;
 }
-
 
 ClapTrap& ClapTrap::operator=(const ClapTrap& other) {
 	std::cout << _className << ": Copy assignment operator called" << std::endl;
@@ -51,7 +53,7 @@ std::string ClapTrap::getName() const {
 }
 
 void	ClapTrap::attack(const std::string& target) {
-	std::cout << "<" << _className << " method attack()>: ";
+	std::cout << _className << " method attack(): ";
 	if (!_hasEnoughHpAndMana()) {
 		_printFailure(Attack, &target);
 		return ;
@@ -61,7 +63,7 @@ void	ClapTrap::attack(const std::string& target) {
 }
 
 void	ClapTrap::takeDamage(unsigned int amount) {
-	std::cout << "<" << _className << " method takeDamage()>: ";
+	std::cout << _className << " method takeDamage(): ";
 	if (!_hasEnoughHpAndMana()) {
 		_printFailure(Tank);
 		return ;
@@ -71,7 +73,7 @@ void	ClapTrap::takeDamage(unsigned int amount) {
 }
 
 void	ClapTrap::beRepaired(unsigned int amount) {
-	std::cout << "<" << _className << " method beRepaired()>: ";
+	std::cout << _className << " method beRepaired(): ";
 	if (!_hasEnoughHpAndMana()) {
 		_printFailure(Heal);
 		return ;
@@ -88,7 +90,7 @@ void	ClapTrap::printStatus() const {
 }
 
 // private methods:
-void	ClapTrap::_printHpAndMana() const {
+void	ClapTrap::_printHpAndMana() const{
 	std::cout << RED_COLOR << _hp << " HP" << RESET_COLOR << " and "
 		<< BLUE_COLOR << _mana << " Mana " << RESET_COLOR << "left.";
 }
@@ -97,7 +99,8 @@ void	ClapTrap::_printAction(ActionType aType, unsigned int amount, const std::st
 	std::cout << *this << " ";
 	switch (aType) {
 		case Attack:
-			std::cout << CYAN_COLOR << "attacks " << YELLOW_COLOR << *target;
+			std::cout << CYAN_COLOR << "attacks " << YELLOW_COLOR << *target << " with "
+				<< _damage << " damage";
 			break;
 		case Tank:
 			std::cout << MAGENTA_COLOR << "is taking " << amount << " damage";

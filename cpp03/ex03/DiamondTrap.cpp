@@ -12,19 +12,19 @@ std::ostream& operator<<(std::ostream& outStream, const DiamondTrap& diamondTrap
 }
 
 DiamondTrap::DiamondTrap()
-	: FragTrap(), ScavTrap() {
+	: ClapTrap() {
 		std::cout << _className << ": Default constructor called" << std::endl;
-		_name = DIAMOND_DEFAULT_NAME;
+	_initialize(_className + "_Default");
 }
 
 DiamondTrap::DiamondTrap(const std::string& name)
-	: ClapTrap(name + "_clap_name"), FragTrap(name), ScavTrap(name) {
+	: ClapTrap(name + "_clap_name"),  FragTrap(name + "_clap_name"), ScavTrap(name + "_clap_name") {
 		std::cout << _className << ": String constructor called" << std::endl;
-		_name = name;
+	_initialize(name);
 }
 
 DiamondTrap::DiamondTrap(const DiamondTrap& other)
-	: ClapTrap(other), FragTrap(other), ScavTrap(other) {
+	: ClapTrap(other) {
 	std::cout << _className << ": Copy constructor called" << std::endl;
 	*this = other;
 }
@@ -58,4 +58,13 @@ void	DiamondTrap::whoAmI() {
 	std::cout << "<" << _className << " method whoAmI()>: ";
 	std::cout << _className << " name: " << _name << "; "
 		<< "ClapTrap name: " << ClapTrap::_name << std::endl;
+}
+
+// private methods:
+void	DiamondTrap::_initialize(const std::string& name) {
+	//ClapTrap::_name = name + "_clap_name";
+	_name = name;
+	_hp = FragTrap::_defaultHp;
+	_mana = ScavTrap::_defaultMana;
+	_damage = FragTrap::_defaultDamage;
 }
