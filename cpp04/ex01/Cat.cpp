@@ -6,7 +6,7 @@ const std::string	Cat::_sound = "Meeooow";
 
 Cat::Cat() {
 	std::cout << _className << ": Default Constructor called" << std::endl;
-	_initialize(CAT_DEFAULT_TYPE);
+	_initialize(_className);
 }
 
 Cat::Cat(const Cat& other)

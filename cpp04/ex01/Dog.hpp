@@ -4,8 +4,6 @@
 #include "Brain.hpp"
 #include <string>
 
-#define DOG_DEFAULT_TYPE	"Dog"
-
 class Dog: public Animal {
   public:
 	Dog();

@@ -3,8 +3,6 @@
 #include "Animal.hpp"
 #include <string>
 
-#define CAT_DEFAULT_TYPE	"Cat"
-
 class Cat: public Animal {
   public:
 	Cat();

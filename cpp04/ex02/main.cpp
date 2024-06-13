@@ -6,6 +6,7 @@
 const int	zooSize = 6;
 
 int	main() {
+	//Animal thisDoesntWork;
 	Animal*	zoo[zooSize];
 
 	for (int i = 0; i < zooSize; i++) {

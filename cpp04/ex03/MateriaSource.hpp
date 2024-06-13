@@ -1,5 +1,12 @@
 #include "IMateriaSource.hpp"
 
+#define MATERIASOURCE_VERBOSE 0
+#if MATERIASOURCE_VERBOSE
+# define MATERIASOURCE_VERBOSE_OUT(msg) std::cout << msg << std::endl;
+#else
+# define MATERIASOURCE_VERBOSE_OUT(msg)
+#endif
+
 class MateriaSource : public IMateriaSource {
   public:
 	MateriaSource();

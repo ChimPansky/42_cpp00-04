@@ -1,5 +1,13 @@
 #pragma once
 
+#define CHARACTER_VERBOSE 1
+#if CHARACTER_VERBOSE
+# define CHARACTER_VERBOSE_OUT(msg) std::cout << msg << std::endl;
+#else
+# define CHARACTER_VERBOSE_OUT(msg)
+#endif
+
+
 #include "ICharacter.hpp"
 #include <string>
 #include "helperClasses/MateriaCleaner.hpp"
@@ -24,6 +32,7 @@ class Character : public ICharacter{
 	AMateria*	_materiaInventory[4]; // this contains any combination of ice* and cure* or NULL if empty slot
 	void				_deleteInventory();
 	void				_cloneInventory(const Character& other);
+
 
 	static List				_droppedMaterias;
 	static MateriaCleaner	_materiaCleaner;

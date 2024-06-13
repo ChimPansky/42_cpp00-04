@@ -2,6 +2,12 @@
 
 #include <string>
 
+#define AMATERIA_VERBOSE 0
+#if AMATERIA_VERBOSE
+# define AMATERIA_VERBOSE_OUT(msg) std::cout << msg << std::endl;
+#else
+# define AMATERIA_VERBOSE_OUT(msg)
+#endif
 
 class ICharacter;
 

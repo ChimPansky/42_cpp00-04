@@ -6,7 +6,7 @@ const std::string	Dog::_sound = "Woofi";
 
 Dog::Dog() {
 	std::cout << _className << ": Default Constructor called" << std::endl;
-	_initialize(DOG_DEFAULT_TYPE);
+	_initialize(_className);
 }
 
 Dog::Dog(const Dog& other)

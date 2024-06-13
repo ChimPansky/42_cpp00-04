@@ -2,12 +2,14 @@
 #include <iostream>
 
 MateriaSource::MateriaSource() {
+	MATERIASOURCE_VERBOSE_OUT("Materiasource:: Constructor() called");
 	for (int i= 0; i < 4; i++) {
 		_learnedMaterias[i] = 0;
 	}
 }
 
 MateriaSource::MateriaSource(const MateriaSource& other) {
+	MATERIASOURCE_VERBOSE_OUT("Materiasource:: Copy Constructor called");
 	for (int i= 0; i < 4; i++) {
 		_learnedMaterias[i] = 0;
 	}
@@ -15,6 +17,7 @@ MateriaSource::MateriaSource(const MateriaSource& other) {
 }
 
 MateriaSource& MateriaSource::operator=(const MateriaSource& other) {
+	MATERIASOURCE_VERBOSE_OUT("Materiasource:: Copy assignment operator overload called");
 	if (this != &other) {
 		_deleteMaterias();
 		_cloneMaterias(other);
@@ -23,11 +26,11 @@ MateriaSource& MateriaSource::operator=(const MateriaSource& other) {
 }
 
 MateriaSource::~MateriaSource() {
+	MATERIASOURCE_VERBOSE_OUT("Materiasource:: Destruct called");
 	_deleteMaterias();
 }
 
 void	MateriaSource::learnMateria(AMateria* materia) {
-	//append to _learnedMaterias...
 	for (int i = 0; i < 4; i++) {
 		if (_learnedMaterias[i] == 0) {
 			_learnedMaterias[i] = materia;
@@ -47,6 +50,8 @@ AMateria*	MateriaSource::createMateria(std::string const & type) {
 }
 
 void	MateriaSource::printMaterias() const {
+	MATERIASOURCE_VERBOSE_OUT("Materiasource::printInventory() called");
+	std::cout << this << "'s learned Materias:" << std::endl;
 	for (int i = 0; i < 4; i++) {
 		std::cout << "MateriaSource[" << i << "]: ";
 		if (_learnedMaterias[i] == 0)
@@ -57,9 +62,18 @@ void	MateriaSource::printMaterias() const {
 }
 
 void	MateriaSource::_deleteMaterias() {
-	// check if there are duplicate pointers to avoid double deletes...
+	for (int i = 0; i < 4; i++) {
+		for (int j = i + 1; j < 4; j++) {
+			if (_learnedMaterias[i] == 0)
+				continue;
+			if (_learnedMaterias[i] == _learnedMaterias[j])
+				_learnedMaterias[j] = 0;
+		}
+	}
 	for (int i = 0; i < 4; i++) {
 		if (_learnedMaterias[i] != 0) {
+			MATERIASOURCE_VERBOSE_OUT("MateriaSource::deleteMaterias(): deleting Materia "
+				<< _learnedMaterias[i])
 			delete _learnedMaterias[i];
 			_learnedMaterias[i] = 0;
 		}

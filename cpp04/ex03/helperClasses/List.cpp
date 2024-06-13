@@ -3,14 +3,18 @@
 
 // constructors, copy assignment operator overload and destructor:
 List::List()
-	: _head(0) {}
+	: _head(0) {
+	LIST_VERBOSE_OUT("List:: Constructor() called");
+	}
 
 List::List(const List& other)
 	: _head(0) {
+	LIST_VERBOSE_OUT("List:: Copy Constructor called");
 		*this = other;
 }
 
 List&	List::operator=(const List& other) {
+	LIST_VERBOSE_OUT("List:: Copy assignment operator overload called");
 	if (this == &other)
 		return *this;
 	if (!this->isEmpty())
@@ -26,7 +30,7 @@ List&	List::operator=(const List& other) {
 }
 
 List::~List() {
-	std::cout << "List Destructor: deleteAll..." << std::endl;
+	LIST_VERBOSE_OUT("List:: Destructor called");
 	deleteAll();
 }
 
@@ -81,7 +85,7 @@ void	List::deleteAll() {
 		return ;
 	while (cur != 0) {
 		next = cur->next;
-		std::cout << "deleteAll deleting: " << cur << " | val: " << cur->val << std::endl;
+		std::cout << "List::deleteAll deleting: " << cur << " | val: " << cur->val << std::endl;
 		delete cur;
 		cur = next;
 	}

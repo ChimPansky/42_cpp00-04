@@ -1,10 +1,12 @@
 #include "Character.hpp"
+#include "AMateria.hpp"
 #include <iostream>
 
-
-MateriaCleaner	Character::_materiaCleaner;
+List			Character::_droppedMaterias;
+MateriaCleaner	Character::_materiaCleaner(&_droppedMaterias);
 
 Character::Character() {
+	CHARACTER_VERBOSE_OUT("Character:: Constructor() called");
 	for (int i= 0; i < 4; i++) {
 		_materiaInventory[i] = 0;
 	}
@@ -12,16 +14,19 @@ Character::Character() {
 
 Character::Character(std::string name)
 	: _name(name) {
+	CHARACTER_VERBOSE_OUT("Character:: Constructor(name) called");
 	for (int i= 0; i < 4; i++) {
 		_materiaInventory[i] = 0;
 	}
 }
 
 Character::Character(const Character& other) {
+	CHARACTER_VERBOSE_OUT("Character:: Copy Constructor called");
 	*this = other;
 }
 
 Character& Character::operator=(const Character& other) {
+	CHARACTER_VERBOSE_OUT("Character:: Copy assignment operator overload called");
 	if (this != &other) {
 		_name = other._name;
 		_deleteInventory();
@@ -31,6 +36,7 @@ Character& Character::operator=(const Character& other) {
 }
 
 Character::~Character() {
+	CHARACTER_VERBOSE_OUT("Character:: Destructor called");
 	_deleteInventory();
 }
 
@@ -46,7 +52,7 @@ void				Character::equip(AMateria* m) {
 	for (int i = 0; i < 4; i++) {
 		if (_materiaInventory[i] == 0) {
 			_materiaInventory[i] = m;
-			std::cout << "Ability successfully equiped in slot " << i << "!" << std::endl;
+			CHARACTER_VERBOSE_OUT("Ability successfully equipped in slot " << i << "!")
 			return;
 		}
 	}
@@ -64,9 +70,9 @@ void				Character::unequip(int idx) {
 	}
 	_materiaCleaner.addMateria(_materiaInventory[idx]);
 	_materiaInventory[idx] = 0;
-	std::cout << "Character::unequip(): Successfully unequipped slot " << idx << std::endl;
-	// how to not delete the Matera and avoid leaks at the same time??
+	CHARACTER_VERBOSE_OUT("Character::unequip(): Successfully unequipped slot " << idx)
 }
+
 void				Character::use(int idx, ICharacter& target) {
 	if (idx < 0 || idx > 3) {
 		std::cerr << "Character::use(): Index out of range: " << idx << std::endl;
@@ -80,8 +86,10 @@ void				Character::use(int idx, ICharacter& target) {
 }
 
 void	Character::printInventory() const {
+	CHARACTER_VERBOSE_OUT("Character::printInventory() called");
+	std::cout << _name << "'s inventory:" << std::endl;
 	for (int i = 0; i < 4; i++) {
-		std::cout << "MateriaSource[" << i << "]: ";
+		std::cout << "Inventory[" << i << "]: ";
 		if (_materiaInventory[i] == 0)
 			std::cout << "{empty slot}" << std::endl;
 		else
@@ -90,7 +98,7 @@ void	Character::printInventory() const {
 }
 
 void	Character::_deleteInventory() {
-	// check if there are duplicate pointers to avoid double deletes...
+	CHARACTER_VERBOSE_OUT("Character::deleteInventory() called");
 	for (int i = 0; i < 4; i++) {
 		for (int j = i + 1; j < 4; j++) {
 			if (_materiaInventory[i] == 0)
@@ -101,13 +109,18 @@ void	Character::_deleteInventory() {
 	}
 	for (int i = 0; i < 4; i++) {
 		if (_materiaInventory[i] != 0) {
+			CHARACTER_VERBOSE_OUT("Character::deleteInventory(): deleting Materia "
+				<< _materiaInventory[i])
+			std::cout << "before delete\n";
 			delete _materiaInventory[i];
+			_droppedMaterias.remove(_materiaInventory[i]);
 			_materiaInventory[i] = 0;
 		}
 	}
 };
 
 void	Character::_cloneInventory(const Character& other) {
+	CHARACTER_VERBOSE_OUT("Character::cloneInventory called");
 	for (int i = 0; i < 4; i++) {
 		if (other._materiaInventory[i] != 0)
 			_materiaInventory[i] = other._materiaInventory[i]->clone();

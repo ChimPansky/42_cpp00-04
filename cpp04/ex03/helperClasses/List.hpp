@@ -2,6 +2,13 @@
 
 #include <cstddef>
 
+#define LIST_VERBOSE 0
+#if LIST_VERBOSE
+# define LIST_VERBOSE_OUT(msg) std::cout << msg << std::endl;
+#else
+# define LIST_VERBOSE_OUT(msg)
+#endif
+
 #ifndef SUCCESS
 # define SUCCESS 0
 #endif
