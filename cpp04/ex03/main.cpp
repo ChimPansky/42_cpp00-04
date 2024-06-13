@@ -40,7 +40,9 @@ int main() {
 		C2->use(0, *C1);
 		std::cout << std::endl;
 
-		ICharacter* C3(C2);
+		ICharacter* C3 = new Character;
+		*C3 = *C2;
+		C2->printInventory();
 		C3->printInventory();
 
 		delete src;

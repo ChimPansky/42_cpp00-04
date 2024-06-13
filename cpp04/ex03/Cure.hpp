@@ -1,7 +1,7 @@
 #pragma once
 #include "AMateria.hpp"
 
-#define CURE_VERBOSE 0
+#define CURE_VERBOSE 1
 #if CURE_VERBOSE
 # define CURE_VERBOSE_OUT(msg) std::cout << msg << std::endl;
 #else

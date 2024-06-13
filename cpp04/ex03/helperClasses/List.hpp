@@ -2,7 +2,7 @@
 
 #include <cstddef>
 
-#define LIST_VERBOSE 0
+#define LIST_VERBOSE 1
 #if LIST_VERBOSE
 # define LIST_VERBOSE_OUT(msg) std::cout << msg << std::endl;
 #else

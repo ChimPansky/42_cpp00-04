@@ -2,7 +2,7 @@
 
 #include <string>
 
-#define AMATERIA_VERBOSE 0
+#define AMATERIA_VERBOSE 1
 #if AMATERIA_VERBOSE
 # define AMATERIA_VERBOSE_OUT(msg) std::cout << msg << std::endl;
 #else

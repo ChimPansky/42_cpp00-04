@@ -15,7 +15,8 @@ Cure::Cure(const Cure& other)
 
 Cure& Cure::operator=(const Cure& other) {
 	CURE_VERBOSE_OUT("Cure:: Copy assignment operator overload called");
-	(void) other;
+	if (this != &other)
+		_type = other._type;
 	return *this;
 }
 
@@ -28,6 +29,7 @@ std::string const& Cure::getType() const {
 }
 
 AMateria*			Cure::clone() const {
+	CURE_VERBOSE_OUT("Cure::clone() called");
 	return (new Cure(*this));
 }
 

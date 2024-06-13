@@ -15,7 +15,8 @@ Ice::Ice(const Ice& other)
 
 Ice& Ice::operator=(const Ice& other) {
 	ICE_VERBOSE_OUT("Ice:: Copy assignment operator overload called");
-	(void) other;
+	if (this != &other)
+		_type = other._type;
 	return *this;
 }
 
@@ -28,6 +29,7 @@ std::string const& Ice::getType() const {
 }
 
 AMateria*			Ice::clone() const {
+	ICE_VERBOSE_OUT("Ice::clone() called");
 	return (new Ice(*this));
 }
 

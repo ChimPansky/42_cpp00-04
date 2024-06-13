@@ -36,7 +36,7 @@ Character& Character::operator=(const Character& other) {
 }
 
 Character::~Character() {
-	CHARACTER_VERBOSE_OUT("Character:: Destructor called");
+	CHARACTER_VERBOSE_OUT("Character:: " << _name << "Destructor called");
 	_deleteInventory();
 }
 
@@ -93,7 +93,8 @@ void	Character::printInventory() const {
 		if (_materiaInventory[i] == 0)
 			std::cout << "{empty slot}" << std::endl;
 		else
-			std::cout << _materiaInventory[i]->getType() << std::endl;
+			std::cout << _materiaInventory[i]->getType() << "(ptr: "
+				<< _materiaInventory[i] << ")" << std::endl;
 	}
 }
 
@@ -111,7 +112,6 @@ void	Character::_deleteInventory() {
 		if (_materiaInventory[i] != 0) {
 			CHARACTER_VERBOSE_OUT("Character::deleteInventory(): deleting Materia "
 				<< _materiaInventory[i])
-			std::cout << "before delete\n";
 			delete _materiaInventory[i];
 			_droppedMaterias.remove(_materiaInventory[i]);
 			_materiaInventory[i] = 0;

@@ -1,7 +1,7 @@
 #pragma once
 #include "List.hpp"
 
-#define MATERIACLEANER_VERBOSE 0
+#define MATERIACLEANER_VERBOSE 1
 #if MATERIACLEANER_VERBOSE
 # define MATERIACLEANER_VERBOSE_OUT(msg) std::cout << msg << std::endl;
 #else
