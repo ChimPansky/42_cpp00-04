@@ -10,7 +10,7 @@ int main() {
 	{
 		std::cout << "\n---SECTION 1---\n" << std::endl;
 
-		IMateriaSource* src = new MateriaSource();
+		MateriaSource* src = new MateriaSource();
 		src->printMaterias();
 		AMateria* mat1 = new Ice();
 		AMateria* mat2 = new Cure();
@@ -25,8 +25,8 @@ int main() {
 		ICharacter* C1 = new Character("Tweedledee");
 		ICharacter* C2 = new Character("Tweedledum");
 		AMateria* tmp;
-		C1->printInventory();
-		C2->printInventory();
+		dynamic_cast<Character*>(C1)->printInventory();
+		dynamic_cast<Character*>(C2)->printInventory();
 
 		std::cout << "\n---SECTION 3---\n" << std::endl;
 
@@ -41,10 +41,10 @@ int main() {
 		C2->equip(tmp);
 		C1->equip(tmp);
 
-		C1->printInventory();
+		dynamic_cast<Character*>(C1)->printInventory();
 		tmp = src->createMateria("cure");
 		C2->equip(tmp);
-		C2->printInventory();
+		dynamic_cast<Character*>(C2)->printInventory();
 
 		std::cout << "\n---SECTION 4---\n" << std::endl;
 
@@ -55,16 +55,16 @@ int main() {
 
 		C1->unequip(0);
 		C1->unequip(3);
-		C1->printInventory();
+		dynamic_cast<Character*>(C1)->printInventory();
 
 		std::cout << "\n---SECTION 6---\n" << std::endl;
 
 		ICharacter* C3 = new Character;
 		// *C3 = *(Character*)C2;										// C-style casting
 		*dynamic_cast<Character*>(C3) = *dynamic_cast<Character*>(C2);	// better use dynamic casting for downcasting Classes
-		C3->setName(C3->getName() + "_clone");
-		C2->printInventory();
-		C3->printInventory();
+		dynamic_cast<Character*>(C3)->setName(C3->getName() + "_clone");
+		dynamic_cast<Character*>(C2)->printInventory();
+		dynamic_cast<Character*>(C3)->printInventory();
 
 		std::cout << "\n---SECTION 7---\n" << std::endl;
 

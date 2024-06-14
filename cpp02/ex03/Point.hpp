@@ -11,7 +11,7 @@ class Point {
   public:
 	// constructors
   	Point();
-	Point(const float x, const float y);
+	Point(2.1, 1.5)
 	Point(const Fixed& x, const Fixed& y);
 	Point(const Point& other);
 

@@ -21,6 +21,10 @@ int	main() {
 		b->printStatus();
 		c->whoAmI();
 		c->printStatus();
+		std::cout << std::endl;
+
+		c->highFivesGuys();
+		c->guardGate();
 
 		std::cout << std::endl;
 

@@ -9,8 +9,4 @@ class ICharacter {
 	virtual void				equip(AMateria* m) = 0;
 	virtual void				unequip(int idx) = 0;
 	virtual void				use(int idx, ICharacter& target) = 0;
-
-	// not mandatory...
-	virtual void				setName(const std::string& name) = 0;
-	virtual void				printInventory() const = 0;
 };

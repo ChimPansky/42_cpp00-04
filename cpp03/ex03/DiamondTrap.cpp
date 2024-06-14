@@ -57,6 +57,7 @@ std::string DiamondTrap::getName() const {
 void	DiamondTrap::whoAmI() {
 	std::cout << "<" << _className << " method whoAmI()>: ";
 	std::cout << _className << " name: " << _name << "; "
+		<< "ScavTrap name: " << _name
 		<< "ClapTrap name: " << ClapTrap::_name << std::endl;
 }
 
