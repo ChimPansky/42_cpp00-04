@@ -20,7 +20,8 @@ class Character : public ICharacter{
 	Character& operator=(const Character& other);
 	~Character();
 
-	std::string const & getName() const;		// find out if i can omit this, since its declared in ICharacter... otherwise: whats the point of interface class??
+	std::string const & getName() const;
+	void				setName(const std::string& name);
 	void				equip(AMateria* m);
 	void				unequip(int idx);
 	void				use(int idx, ICharacter& target);
@@ -30,8 +31,9 @@ class Character : public ICharacter{
   private:
 	std::string	_name;
 	AMateria*	_materiaInventory[4]; // this contains any combination of ice* and cure* or NULL if empty slot
-	void				_deleteInventory();
-	void				_cloneInventory(const Character& other);
+
+	void	_deleteInventory();
+	void	_cloneInventory(const Character& other);
 
 
 	static List				_droppedMaterias;

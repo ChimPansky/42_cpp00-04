@@ -22,6 +22,9 @@ Character::Character(std::string name)
 
 Character::Character(const Character& other) {
 	CHARACTER_VERBOSE_OUT("Character:: Copy Constructor called");
+	for (int i= 0; i < 4; i++) {
+		_materiaInventory[i] = 0;
+	}
 	*this = other;
 }
 
@@ -29,19 +32,23 @@ Character& Character::operator=(const Character& other) {
 	CHARACTER_VERBOSE_OUT("Character:: Copy assignment operator overload called");
 	if (this != &other) {
 		_name = other._name;
-		_deleteInventory();
-		_cloneInventory(other);
+		_deleteInventory();	// deletes all slots and sets them to 0
+		_cloneInventory(other);	// makes copies of other's slots and equips them
 	}
 	return *this;
 }
 
 Character::~Character() {
-	CHARACTER_VERBOSE_OUT("Character:: " << _name << "Destructor called");
+	CHARACTER_VERBOSE_OUT("Character:: " << _name << " Destructor called");
 	_deleteInventory();
 }
 
 std::string const & Character::getName() const{
 	return _name;
+}
+
+void	Character::setName(const std::string& name) {
+	_name = name;;
 }
 
 void				Character::equip(AMateria* m) {
@@ -52,7 +59,7 @@ void				Character::equip(AMateria* m) {
 	for (int i = 0; i < 4; i++) {
 		if (_materiaInventory[i] == 0) {
 			_materiaInventory[i] = m;
-			CHARACTER_VERBOSE_OUT("Ability successfully equipped in slot " << i << "!")
+			std::cout << "Ability successfully equipped in slot " << i << "!" << std::endl;
 			return;
 		}
 	}
@@ -70,7 +77,7 @@ void				Character::unequip(int idx) {
 	}
 	_materiaCleaner.addMateria(_materiaInventory[idx]);
 	_materiaInventory[idx] = 0;
-	CHARACTER_VERBOSE_OUT("Character::unequip(): Successfully unequipped slot " << idx)
+	std::cout << "Character::unequip(): Successfully unequipped slot " << idx << std::endl;
 }
 
 void				Character::use(int idx, ICharacter& target) {
