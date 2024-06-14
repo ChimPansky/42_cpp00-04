@@ -85,7 +85,7 @@ void	List::deleteAll() {
 		return ;
 	while (cur != 0) {
 		next = cur->next;
-		std::cout << "List::deleteAll deleting: " << cur << " | val: " << cur->val << std::endl;
+		LIST_VERBOSE_OUT("List:: deleteAll() deleting: " << cur << " | val: " << cur->val)
 		delete cur;
 		cur = next;
 	}
@@ -117,6 +117,18 @@ int		List::remove(void* value) {
 	if (removedNodes > 0)
 		return SUCCESS;
 	return FAILURE;
+}
+
+tNode*	List::find(void* value) const {
+	if (value == 0 || isEmpty())
+		return 0;
+	tNode*	cur = _head;
+	while (cur != 0) {
+		if (cur->val == value)
+			return cur;
+		cur = cur->next;
+	}
+	return 0;
 }
 
 void	List::print() const {

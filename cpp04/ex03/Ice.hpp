@@ -1,7 +1,7 @@
 #pragma once
 #include "AMateria.hpp"
 
-#define ICE_VERBOSE 1
+#define ICE_VERBOSE 0
 #if ICE_VERBOSE
 # define ICE_VERBOSE_OUT(msg) std::cout << msg << std::endl;
 #else

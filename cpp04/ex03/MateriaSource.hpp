@@ -1,6 +1,6 @@
 #include "IMateriaSource.hpp"
 
-#define MATERIASOURCE_VERBOSE 1
+#define MATERIASOURCE_VERBOSE 0
 #if MATERIASOURCE_VERBOSE
 # define MATERIASOURCE_VERBOSE_OUT(msg) std::cout << msg << std::endl;
 #else

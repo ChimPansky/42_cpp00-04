@@ -2,18 +2,15 @@
 #include <iostream>
 #include "../AMateria.hpp"
 
-MateriaCleaner::MateriaCleaner(List* droppedMaterias) {
+MateriaCleaner::MateriaCleaner(List* droppedMaterias, List* equippedMaterias) {
 	MATERIACLEANER_VERBOSE_OUT("Materiacleaner:: Constructor() called");
 	_droppedMaterias = droppedMaterias;
+	_equippedMaterias = equippedMaterias;
 }
 
 MateriaCleaner::~MateriaCleaner() {
 	MATERIACLEANER_VERBOSE_OUT("Materiacleaner:: Destructor called");
 	_cleanMaterias();
-}
-
-void	MateriaCleaner::addMateria(AMateria *m) {
-	_droppedMaterias->append((void*)m);
 }
 
 void	MateriaCleaner::_cleanMaterias() {
@@ -27,4 +24,5 @@ void	MateriaCleaner::_cleanMaterias() {
 		delete (AMateria*)toDelete;
 		_droppedMaterias->remove(toDelete);
 	}
+	_equippedMaterias->deleteAll();
 }

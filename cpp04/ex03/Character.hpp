@@ -1,6 +1,6 @@
 #pragma once
 
-#define CHARACTER_VERBOSE 1
+#define CHARACTER_VERBOSE 0
 #if CHARACTER_VERBOSE
 # define CHARACTER_VERBOSE_OUT(msg) std::cout << msg << std::endl;
 #else
@@ -32,10 +32,10 @@ class Character : public ICharacter{
 	std::string	_name;
 	AMateria*	_materiaInventory[4]; // this contains any combination of ice* and cure* or NULL if empty slot
 
-	void	_deleteInventory();
-	void	_cloneInventory(const Character& other);
-
+	void				_deleteInventory();
+	void				_cloneInventory(const Character& other);
 
 	static List				_droppedMaterias;
+	static List				_equippedMaterias;
 	static MateriaCleaner	_materiaCleaner;
 };

@@ -2,7 +2,7 @@
 
 #include <cstddef>
 
-#define LIST_VERBOSE 1
+#define LIST_VERBOSE 0
 #if LIST_VERBOSE
 # define LIST_VERBOSE_OUT(msg) std::cout << msg << std::endl;
 #else
@@ -39,5 +39,6 @@ class List {
 	tNode*	last() const;
 	int		append(void* value);
 	int		remove(void* value);
+	tNode*	find(void* value) const;
 	void	print() const;
 };

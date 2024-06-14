@@ -38,6 +38,7 @@ int main() {
 		C1->equip(tmp);
 		tmp = src->createMateria("cure");
 		C1->equip(tmp);
+		C2->equip(tmp);
 		C1->equip(tmp);
 
 		C1->printInventory();
@@ -59,8 +60,8 @@ int main() {
 		std::cout << "\n---SECTION 6---\n" << std::endl;
 
 		ICharacter* C3 = new Character;
-		// *C3 = *(Character*)C2;		// C-style casting
-		*dynamic_cast<Character*>(C3) = *dynamic_cast<Character*>(C2);	// better use dynamic casting for downcasting Class
+		// *C3 = *(Character*)C2;										// C-style casting
+		*dynamic_cast<Character*>(C3) = *dynamic_cast<Character*>(C2);	// better use dynamic casting for downcasting Classes
 		C3->setName(C3->getName() + "_clone");
 		C2->printInventory();
 		C3->printInventory();

@@ -3,7 +3,8 @@
 #include <iostream>
 
 List			Character::_droppedMaterias;
-MateriaCleaner	Character::_materiaCleaner(&_droppedMaterias);
+List			Character::_equippedMaterias;
+MateriaCleaner	Character::_materiaCleaner(&_droppedMaterias, &_equippedMaterias);
 
 Character::Character() {
 	CHARACTER_VERBOSE_OUT("Character:: Constructor() called");
@@ -53,12 +54,17 @@ void	Character::setName(const std::string& name) {
 
 void				Character::equip(AMateria* m) {
 	if (m == 0) {
-		std::cerr << "cannot equip empty AMateria!" << std::endl;
+		std::cerr << "Cannot equip empty AMateria!" << std::endl;
+		return;
+	}
+	if (_equippedMaterias.find(m) != 0) {
+		std::cerr << "Materia is already equipped somewhere else!!" << std::endl;
 		return;
 	}
 	for (int i = 0; i < 4; i++) {
 		if (_materiaInventory[i] == 0) {
 			_materiaInventory[i] = m;
+			_equippedMaterias.append(m);
 			std::cout << "Ability successfully equipped in slot " << i << "!" << std::endl;
 			return;
 		}
@@ -75,7 +81,7 @@ void				Character::unequip(int idx) {
 		std::cerr << "Character::unequip(): Cannot unequip empty slot " << idx << std::endl;
 		return ;
 	}
-	_materiaCleaner.addMateria(_materiaInventory[idx]);
+	_droppedMaterias.append(_materiaInventory[idx]);
 	_materiaInventory[idx] = 0;
 	std::cout << "Character::unequip(): Successfully unequipped slot " << idx << std::endl;
 }
